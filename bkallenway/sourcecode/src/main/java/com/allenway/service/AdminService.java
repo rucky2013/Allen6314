@@ -7,4 +7,6 @@ import com.allenway.entity.Admin;
  */
 public interface AdminService {
     Admin findAdmin();
+
+    void updateAdmin(Admin admin);
 }

@@ -25,6 +25,10 @@ public class AdminControllerTest {
     @Autowired
     private AdminService adminService;
 
+    /**
+     * 测试查找管理员函数
+     * @throws Exception
+     */
     @Test
     public void findAdmin() throws Exception {
 
@@ -37,5 +41,24 @@ public class AdminControllerTest {
         returnTemplate.addData("admin",admin);
 
         System.out.println("Admin = " + returnTemplate.toString());
+    }
+
+    /**
+     * 测试更新管理员函数（不包括密码字段）
+     * @throws Exception
+     */
+    @Test
+    public void updateAdmin() throws Exception {
+
+        Admin admin = adminService.findAdmin();
+
+        assertNotNull("admin = null!",admin);
+
+        admin.setEmail("wuhuachuan713@163.com");
+
+        adminService.updateAdmin(admin);
+
+        assertEquals("update fail!",admin.getEmail(),"wuhuachuan713@163.com");
+
     }
 }
