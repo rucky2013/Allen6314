@@ -2,6 +2,7 @@ package com.allenway.controller;
 
 import com.allenway.entity.Admin;
 import com.allenway.service.AdminService;
+import com.allenway.utils.ReturnTemplate;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +32,10 @@ public class AdminControllerTest {
 
         assertNotNull("admin = null!",admin);
 
-        System.out.println("Admin = " + admin);
+        ReturnTemplate returnTemplate = new ReturnTemplate();
+
+        returnTemplate.addData("admin",admin);
+
+        System.out.println("Admin = " + returnTemplate.toString());
     }
 }

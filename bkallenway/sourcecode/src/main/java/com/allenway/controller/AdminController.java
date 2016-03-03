@@ -2,6 +2,7 @@ package com.allenway.controller;
 
 import com.allenway.entity.Admin;
 import com.allenway.service.AdminService;
+import com.allenway.utils.ReturnTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,12 @@ public class AdminController {
 
     @RequestMapping(value = "/find-admin",method = RequestMethod.GET)
     public String findAdmin(){
-       Admin admin = adminService.findAdmin();
+        Admin admin = adminService.findAdmin();
 
-        return "";
+        ReturnTemplate returnTemplate = new ReturnTemplate();
+
+        returnTemplate.addData("admin",admin);
+
+        return returnTemplate.toString();
     }
 }
