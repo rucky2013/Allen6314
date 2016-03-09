@@ -3,7 +3,10 @@ package com.allenway.controller;
 import com.allenway.entity.Admin;
 import com.allenway.service.AdminService;
 import com.allenway.utils.ReturnTemplate;
+import com.google.gson.Gson;
+import org.hibernate.loader.custom.Return;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,22 +28,21 @@ public class AdminControllerTest {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private AdminController adminController;
+
+    @Before
+    public void init(){
+        adminController.setAdminService(adminService);
+    }
+
     /**
      * 测试查找管理员函数
      * @throws Exception
      */
     @Test
     public void findAdmin() throws Exception {
-
-        Admin admin = adminService.findAdmin();
-
-        assertNotNull("admin = null!",admin);
-
-        ReturnTemplate returnTemplate = new ReturnTemplate();
-
-        returnTemplate.addData("admin",admin);
-
-        System.out.println("Admin = " + returnTemplate.toString());
+        assertTrue("admin is't found! It's impossible !! ",adminController.findAdmin().contains("admin"));
     }
 
     /**
@@ -52,13 +54,12 @@ public class AdminControllerTest {
 
         Admin admin = adminService.findAdmin();
 
-        assertNotNull("admin = null!",admin);
+        assertNotNull("admin is't found! It's impossible !! ",admin);
 
-        admin.setEmail("wuhuachuan713@163.com");
+        admin.setEmail("wuhuachuan714@163.com");
 
-        adminService.updateAdmin(admin);
+        assertTrue("admin update fail !! ",adminController.updateAdmin(admin).contains("\"statusCode\":0"));
 
-        assertEquals("update fail!",admin.getEmail(),"wuhuachuan713@163.com");
 
     }
 }

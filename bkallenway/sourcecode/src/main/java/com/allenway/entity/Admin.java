@@ -24,10 +24,11 @@ import lombok.ToString;
 public class Admin extends BaseEntity {
 
     private String username;  //登录名
-    private String passphrase;
-    private Date lastLoginDate;
+    private String password;
     private String salt; //用户密码加盐
 
     private String email;
     private String qq;
+
+    private Date lastLoginDate;
 }

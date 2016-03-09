@@ -26,4 +26,9 @@ public class AdminServiceImpl implements AdminService {
     public void updateAdmin(Admin admin) {
         adminDao.saveAndFlush(admin);
     }
+
+    @Override
+    public Admin findAdminByUsername(String username) {
+        return adminDao.findAdminByUsername(username);
+    }
 }

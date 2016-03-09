@@ -4,6 +4,7 @@ import com.allenway.entity.Admin;
 import com.allenway.service.AdminService;
 import com.allenway.utils.ReturnStatusCode;
 import com.allenway.utils.ReturnTemplate;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -19,6 +20,7 @@ import java.util.HashMap;
  */
 
 @Slf4j
+@Data
 @RestController
 @RequestMapping(value = "/admin")
 public class AdminController {

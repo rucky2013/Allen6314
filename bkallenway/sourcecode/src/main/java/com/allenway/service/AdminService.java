@@ -9,4 +9,6 @@ public interface AdminService {
     Admin findAdmin();
 
     void updateAdmin(Admin admin);
+
+    Admin findAdminByUsername(String username);
 }
