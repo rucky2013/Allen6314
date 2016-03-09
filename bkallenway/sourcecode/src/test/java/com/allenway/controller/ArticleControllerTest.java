@@ -1,8 +1,6 @@
 package com.allenway.controller;
 
 import com.allenway.entity.Article;
-import com.allenway.service.ArticleService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by wuhuachuan on 16/3/9.
@@ -23,9 +21,6 @@ public class ArticleControllerTest {
 
     @Autowired
     private ArticleController articleController;
-
-    @Autowired
-    private ArticleService articleService;
 
     @Test
     public void addArticle() throws Exception {

@@ -4,6 +4,7 @@ import com.allenway.entity.Article;
 import com.allenway.service.ArticleService;
 import com.allenway.utils.ReturnStatusCode;
 import com.allenway.utils.ReturnTemplate;
+import com.allenway.utils.ValidUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ public class ArticleController {
     public String deleteArticleById(@RequestParam String id){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
-        if(validIdParam(id)){
+        if(ValidUtils.validIdParam(id)){
             Article article = articleService.findArticleById(id);
 
             if(article == null){
@@ -86,22 +87,6 @@ public class ArticleController {
     }
 
     /**
-     * 检验前端传来的 id 是否合理
-     * @param id
-     * @return
-     */
-    private boolean validIdParam(String id) {
-        if(StringUtils.isEmpty(id)){
-            return false;
-        //防止 sql 注入攻击
-        } else if(id.contains("\"") || id.contains("\'")){
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
      * 根据 Id 查找某一篇文章
      * @param id
      * @return
@@ -110,7 +95,7 @@ public class ArticleController {
     public String findArticleById(@RequestParam String id) {
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
-        if(validIdParam(id)){
+        if(ValidUtils.validIdParam(id)){
             Article article = articleService.findArticleById(id);
 
             if(article == null){

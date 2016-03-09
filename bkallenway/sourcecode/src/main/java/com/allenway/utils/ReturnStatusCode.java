@@ -17,7 +17,8 @@ public enum ReturnStatusCode {
      */
     PARAM_INVALID(2000), //前端传来的参数有误，例如为""，null 或者带有 "" 或者 ''(sql攻击的标志)
     DATA_IS_NOT_FOUND(2001),  //数据找不到
-    USERNAME_PASSWORD_WRONG(2002); //登录的用户名密码错误
+    USERNAME_PASSWORD_WRONG(2002), //登录的用户名密码错误
+    CLASSIFY_HAS_ARTICLE_OR_SUBCLASSIFY(2003); //分类无法删除,因为有子分类或者该分类下有文章
 
     private int code;
 

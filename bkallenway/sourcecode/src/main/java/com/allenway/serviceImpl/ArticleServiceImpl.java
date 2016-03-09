@@ -6,6 +6,8 @@ import com.allenway.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by wuhuachuan on 16/3/9.
  */
@@ -30,5 +32,10 @@ public class ArticleServiceImpl implements ArticleService {
     public void delete(Article article) {
         article.setIsDelete(true);
         articleDao.saveAndFlush(article);
+    }
+
+    @Override
+    public List<Article> findArticlesByClassifyId(String id) {
+        return articleDao.findArticlesByClassifyId(id);
     }
 }
