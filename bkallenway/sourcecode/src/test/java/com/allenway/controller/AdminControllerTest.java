@@ -2,10 +2,6 @@ package com.allenway.controller;
 
 import com.allenway.entity.Admin;
 import com.allenway.service.AdminService;
-import com.allenway.utils.ReturnTemplate;
-import com.google.gson.Gson;
-import org.hibernate.loader.custom.Return;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +10,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by wuhuachuan on 16/3/3.
@@ -42,7 +39,7 @@ public class AdminControllerTest {
      */
     @Test
     public void findAdmin() throws Exception {
-        assertTrue("admin is't found! It's impossible !! ",adminController.findAdmin().contains("admin"));
+        assertTrue("admin is't found! It's impossible !! ",adminController.findAdmin().toString().contains("admin"));
     }
 
     /**
@@ -58,7 +55,7 @@ public class AdminControllerTest {
 
         admin.setEmail("wuhuachuan714@163.com");
 
-        assertTrue("admin update fail !! ",adminController.updateAdmin(admin).contains("\"statusCode\":0"));
+        assertTrue("admin update fail !! ",adminController.updateAdmin(admin).toString().contains("\"statusCode\":0"));
 
 
     }

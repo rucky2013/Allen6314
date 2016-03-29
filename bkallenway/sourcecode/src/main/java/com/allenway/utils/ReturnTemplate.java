@@ -11,7 +11,7 @@ import java.util.HashMap;
 @Data
 public class ReturnTemplate {
 
-    private ReturnStatusCode statusCode;  //必须
+    private int statusCode;  //必须
     private String errorMsg;   // 可选（前端可以从ReturnErrorCode参考表中得出）
     private HashMap<String,Object> returnData; // 可选
 
@@ -21,7 +21,7 @@ public class ReturnTemplate {
      * 构造函数 : 默认创建是一个成功的请求
      */
     public ReturnTemplate(){
-        this.statusCode = ReturnStatusCode.SUCCESS;
+        this.statusCode = ReturnStatusCode.SUCCESS.getCode();
         //returnData 的 HashMap 到真正需要返回数据的时候创建
     }
 
@@ -31,7 +31,7 @@ public class ReturnTemplate {
      * @param statusCode
      */
     public ReturnTemplate(ReturnStatusCode statusCode){
-        this.statusCode = statusCode;
+        this.statusCode = statusCode.getCode();
         //returnData 的 HashMap 到真正需要返回数据的时候创建
     }
 
@@ -41,7 +41,7 @@ public class ReturnTemplate {
      * @param errorMsg
      */
     public ReturnTemplate(ReturnStatusCode statusCode, String errorMsg){
-        this.statusCode = statusCode;
+        this.statusCode = statusCode.getCode();
         this.errorMsg = errorMsg;
         //returnData 的 HashMap 到真正需要返回数据的时候创建
     }
@@ -51,7 +51,7 @@ public class ReturnTemplate {
      * @param builder
      */
     public ReturnTemplate(Builder builder){
-        this.statusCode = builder.statusCode;
+        this.statusCode = builder.statusCode.getCode();
         this.errorMsg = builder.errorMsg;
         this.returnData = builder.returnData;
     }
@@ -92,14 +92,8 @@ public class ReturnTemplate {
         }
     }
 
-    public String toString(){
-
-        HashMap<String,Object> map = new HashMap<String,Object>();
-        map.put("statusCode", statusCode.getCode());
-        map.put("errorMsg", errorMsg);
-        map.put("data", returnData);
-
-        return gson.toJson(map);
+    public void setStatusCode(ReturnStatusCode returnStatusCode){
+        this.statusCode = returnStatusCode.getCode();
     }
 
 }

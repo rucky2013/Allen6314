@@ -1,8 +1,8 @@
 package com.allenway.controller;
 
 import com.allenway.entity.Article;
+import com.allenway.infrustructure.DataNotFoundException;
 import com.allenway.service.ArticleService;
-import com.allenway.utils.ReturnStatusCode;
 import com.allenway.utils.ReturnTemplate;
 import com.allenway.utils.ValidUtils;
 import lombok.Data;
@@ -33,16 +33,15 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "/save-article",method = RequestMethod.POST)
-    public String saveArticle(@RequestParam Article article){
+    public Object saveArticle(@RequestParam Article article){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
         if(validArticleParam(article)){
             articleService.save(article);
-            return returnTemplate.toString();
         } else {
-            returnTemplate.setStatusCode(ReturnStatusCode.PARAM_INVALID);
-            return returnTemplate.toString();
+            throw new IllegalArgumentException("param is invalid!");
         }
+        return returnTemplate;
     }
 
     /**
@@ -67,23 +66,21 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "/delete-article-by-id",method = RequestMethod.POST)
-    public String deleteArticleById(@RequestParam String id){
+    public Object deleteArticleById(@RequestParam String id){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
         if(ValidUtils.validIdParam(id)){
             Article article = articleService.findArticleById(id);
 
             if(article == null){
-                returnTemplate.setStatusCode(ReturnStatusCode.DATA_IS_NOT_FOUND);
-                return returnTemplate.toString();
+                throw new DataNotFoundException("article == null");
             } else {
                 articleService.delete(article);
-                return returnTemplate.toString();
             }
         } else {
-            returnTemplate.setStatusCode(ReturnStatusCode.PARAM_INVALID);
-            return returnTemplate.toString();
+            throw new IllegalArgumentException("Param is invalid!");
         }
+        return returnTemplate;
     }
 
     /**
@@ -92,22 +89,20 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "/find-article-by-id",method = RequestMethod.POST)
-    public String findArticleById(@RequestParam String id) {
+    public Object findArticleById(@RequestParam String id) {
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
         if(ValidUtils.validIdParam(id)){
             Article article = articleService.findArticleById(id);
 
             if(article == null){
-                returnTemplate.setStatusCode(ReturnStatusCode.DATA_IS_NOT_FOUND);
-                return returnTemplate.toString();
+                throw new DataNotFoundException("article == null");
             } else {
                 returnTemplate.addData("article",article);
-                return returnTemplate.toString();
             }
         } else {
-            returnTemplate.setStatusCode(ReturnStatusCode.PARAM_INVALID);
-            return returnTemplate.toString();
+            throw new IllegalArgumentException("Param is invalid!");
         }
+        return returnTemplate;
     }
 }

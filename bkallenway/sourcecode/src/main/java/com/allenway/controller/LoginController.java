@@ -33,7 +33,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public String login(@RequestParam Admin admin){
+    public Object login(@RequestParam Admin admin){
 
         boolean isParamValid = validLoginAdminParam(admin);
 
@@ -43,15 +43,14 @@ public class LoginController {
             Admin ad =  validUsernamePassword(admin.getUsername(),admin.getPassword());
             if(ad == null){
                 returnTemplate.setStatusCode(ReturnStatusCode.USERNAME_PASSWORD_WRONG);
-                return returnTemplate.toString();
+                return returnTemplate;
             } else {
                 returnTemplate.addData("admin",ad);
                 return returnTemplate.toString();
             }
 
         } else {
-            returnTemplate.setStatusCode(ReturnStatusCode.PARAM_INVALID);
-            return returnTemplate.toString();
+            throw new IllegalArgumentException("Param is invalid!");
         }
     }
 

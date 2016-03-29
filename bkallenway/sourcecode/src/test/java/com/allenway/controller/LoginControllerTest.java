@@ -10,9 +10,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.util.concurrent.ThreadPoolExecutor;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by wuhuachuan on 16/3/8.
@@ -41,21 +39,21 @@ public class LoginControllerTest {
         //测试帐号密码为空的情况
         admin.setUsername("");
         admin.setPassword("");
-        assertTrue("return string doesn't contain statusCode 2000!",loginController.login(admin).contains("2000"));
+        assertTrue("return string doesn't contain statusCode 2000!",loginController.login(admin).toString().contains("2000"));
 
         //测试sql攻击的情况
         admin.setUsername("");
         admin.setPassword("\"");
-        assertTrue("return string doesn't contain statusCode 2000!",loginController.login(admin).contains("2000"));
+        assertTrue("return string doesn't contain statusCode 2000!",loginController.login(admin).toString().contains("2000"));
 
         //测试错误的帐号密码
         admin.setUsername("admin");
         admin.setPassword("123456");
-        assertTrue("return string doesn't contain statusCode 2002!",loginController.login(admin).contains("2002"));
+        assertTrue("return string doesn't contain statusCode 2002!",loginController.login(admin).toString().contains("2002"));
 
         //测试正确的情况
         admin.setUsername("admin");
         admin.setPassword("admin");
-        assertTrue("can not login with correct username and password!",!loginController.login(admin).contains("admin"));
+        assertTrue("can not login with correct username and password!",!loginController.login(admin).toString().contains("admin"));
     }
 }

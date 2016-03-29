@@ -2,6 +2,7 @@ package com.allenway.controller;
 
 import com.allenway.entity.Article;
 import com.allenway.entity.Classify;
+import com.allenway.infrustructure.DataNotFoundException;
 import com.allenway.service.ArticleService;
 import com.allenway.service.ClassifyService;
 import com.allenway.utils.ReturnStatusCode;
@@ -40,18 +41,15 @@ public class ClassifyController {
      * @return
      */
     @RequestMapping(value = "/save-classify",method = RequestMethod.POST)
-    public String saveClassify(@RequestParam Classify classify){
+    public Object saveClassify(@RequestParam Classify classify){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
-
         if(validClassifyParam(classify)){
             classifyService.save(classify);
-
-            return returnTemplate.toString();
         } else {
-            returnTemplate.setStatusCode(ReturnStatusCode.PARAM_INVALID);
-            return  returnTemplate.toString();
+            throw new IllegalArgumentException("Param is invalid!");
         }
+        return returnTemplate;
     }
 
     /**
@@ -73,7 +71,7 @@ public class ClassifyController {
      * @return
      */
     @RequestMapping(value = "/delete-classify-by-id",method = RequestMethod.POST)
-    public String deleteClassifyById(@RequestParam String id){
+    public Object deleteClassifyById(@RequestParam String id){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
 
@@ -81,20 +79,18 @@ public class ClassifyController {
             //如果该分类下有子分类 或者 有 还有 文章,那么则不能删除
             if(classifyHasArticleOrHasSubClassify(id)){
                 returnTemplate.setStatusCode(ReturnStatusCode.CLASSIFY_HAS_ARTICLE_OR_SUBCLASSIFY);
-                return returnTemplate.toString();
+                return returnTemplate;
             } else {
                 Classify classify = classifyService.findClassifyById(id);
                 if(classify == null){
-                    returnTemplate.setStatusCode(ReturnStatusCode.DATA_IS_NOT_FOUND);
-                    return returnTemplate.toString();
+                    throw new DataNotFoundException("classify == null!");
                 } else {
                     classifyService.deleteClassifyById(classify);
-                    return returnTemplate.toString();
+                    return returnTemplate;
                 }
             }
         } else {
-            returnTemplate.setStatusCode(ReturnStatusCode.PARAM_INVALID);
-            return  returnTemplate.toString();
+            throw new IllegalArgumentException("Param is invalid!");
         }
     }
 
@@ -127,24 +123,21 @@ public class ClassifyController {
      * @return
      */
     @RequestMapping(value = "/find-classify-by-id",method = RequestMethod.POST)
-    public String findClassifyById(@RequestParam String id){
+    public Object findClassifyById(@RequestParam String id){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
-
         if(ValidUtils.validIdParam(id)){
             Classify classify = classifyService.findClassifyById(id);
 
             if(classify == null) {
-                returnTemplate.setStatusCode(ReturnStatusCode.DATA_IS_NOT_FOUND);
-                return  returnTemplate.toString();
+                throw new DataNotFoundException("classify == null");
             } else {
                 returnTemplate.addData("classify",classify);
-                return returnTemplate.toString();
+                return returnTemplate;
             }
 
         } else {
-            returnTemplate.setStatusCode(ReturnStatusCode.PARAM_INVALID);
-            return  returnTemplate.toString();
+            throw new IllegalArgumentException("Param is invalid!");
         }
     }
 }
