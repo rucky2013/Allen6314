@@ -26,9 +26,14 @@ public class Admin extends BaseEntity {
     private String username;  //登录名
     private String password;
     private String salt; //用户密码加盐
-
-    private String email;
-    private String qq;
-
     private Date lastLoginDate;
+
+
+    private String github;
+    private String nickName;
+    private Date birthday;
+
+    private String qq;
+    private String wechat;
+    private String email;
 }

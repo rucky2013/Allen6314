@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -64,6 +65,10 @@ public class AdminController {
         hashMap.put("username",admin.getUsername());
         hashMap.put("email",admin.getEmail());
         hashMap.put("qq",admin.getQq());
+        hashMap.put("wechat",admin.getWechat());
+        hashMap.put("github",admin.getGithub());
+        hashMap.put("nickName",admin.getNickName());
+        hashMap.put("birthday",admin.getBirthday());
 
         return hashMap;
     }
