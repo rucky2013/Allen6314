@@ -83,7 +83,13 @@ public class ClassifyControllerTest {
         //测试id是正常的情况下
         id = "14dfdc38-303b-4a45-ba97-667c819b8c16";
         assertTrue("id is correct ,but return string doesn't contain the data",classifyController.findClassifyById(id).toString().contains("classify"));
-
-
     }
+
+
+    @Test
+    public void findAllFirstLevelClassifies(){
+        assertTrue("Some exception occurs in the findAllFirstLevelClassifies method!",classifyController.findAllFirstLevelClassifies().toString().contains("classifies"));
+    }
+
+
 }

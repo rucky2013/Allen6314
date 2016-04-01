@@ -15,4 +15,6 @@ public interface ClassifyService {
     Classify findClassifyById(String id);
 
     List<Classify> findSubClassifiesByParentClassifyId(String id);
+
+    List<Classify> findAllFirstLevelClassifies();
 }

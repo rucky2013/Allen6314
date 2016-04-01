@@ -13,7 +13,7 @@ public class ReturnTemplate {
 
     private int statusCode;  //必须
     private String errorMsg;   // 可选（前端可以从ReturnErrorCode参考表中得出）
-    private HashMap<String,Object> returnData; // 可选
+    private HashMap<String,Object> data; // 可选
 
     private static Gson gson = new Gson();
 
@@ -22,7 +22,7 @@ public class ReturnTemplate {
      */
     public ReturnTemplate(){
         this.statusCode = ReturnStatusCode.SUCCESS.getCode();
-        //returnData 的 HashMap 到真正需要返回数据的时候创建
+        //data 的 HashMap 到真正需要返回数据的时候创建
     }
 
     /**
@@ -32,7 +32,7 @@ public class ReturnTemplate {
      */
     public ReturnTemplate(ReturnStatusCode statusCode){
         this.statusCode = statusCode.getCode();
-        //returnData 的 HashMap 到真正需要返回数据的时候创建
+        //data 的 HashMap 到真正需要返回数据的时候创建
     }
 
     /**
@@ -43,7 +43,7 @@ public class ReturnTemplate {
     public ReturnTemplate(ReturnStatusCode statusCode, String errorMsg){
         this.statusCode = statusCode.getCode();
         this.errorMsg = errorMsg;
-        //returnData 的 HashMap 到真正需要返回数据的时候创建
+        //data 的 HashMap 到真正需要返回数据的时候创建
     }
 
     /**
@@ -53,7 +53,7 @@ public class ReturnTemplate {
     public ReturnTemplate(Builder builder){
         this.statusCode = builder.statusCode.getCode();
         this.errorMsg = builder.errorMsg;
-        this.returnData = builder.returnData;
+        this.data = builder.data;
     }
 
     /**
@@ -62,10 +62,10 @@ public class ReturnTemplate {
      * @param obj
      */
     public void addData(String key,Object obj){
-        if(returnData == null){
-            returnData = new HashMap<String,Object>();
+        if(data == null){
+            data = new HashMap<String,Object>();
         }
-        returnData.put(key,obj);
+        data.put(key,obj);
     }
 
     //Builder 模式创建 ReturnTemplate
@@ -73,7 +73,7 @@ public class ReturnTemplate {
 
         private ReturnStatusCode statusCode;
         private String errorMsg;  //
-        private HashMap<String,Object> returnData = new HashMap<String,Object>();
+        private HashMap<String,Object> data = new HashMap<String,Object>();
 
         private Builder statusCode(ReturnStatusCode statusCode){
             this.statusCode = statusCode;
@@ -83,8 +83,8 @@ public class ReturnTemplate {
             this.errorMsg = errorMsg;
             return this;
         }
-        private Builder returnData(HashMap<String,Object> returnData) {
-            this.returnData = returnData;
+        private Builder data(HashMap<String,Object> data) {
+            this.data = data;
             return this;
         }
         public ReturnTemplate build(){

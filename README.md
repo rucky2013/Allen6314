@@ -8,6 +8,7 @@ just a personal blog
 - 基础服务已完成：
   - json的统一返回格式
   - 加密
+  - 统一异常处理
 
 # frontallenway（前端部分）
 

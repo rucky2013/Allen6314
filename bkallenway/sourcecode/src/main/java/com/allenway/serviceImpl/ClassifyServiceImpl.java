@@ -38,4 +38,9 @@ public class ClassifyServiceImpl implements ClassifyService{
     public List<Classify> findSubClassifiesByParentClassifyId(String id) {
         return classifyDao.findSubClassifiesByParentClassifyId(id);
     }
+
+    @Override
+    public List<Classify> findAllFirstLevelClassifies() {
+        return classifyDao.findAllFirstLevelClassifies();
+    }
 }

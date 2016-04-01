@@ -17,4 +17,7 @@ public interface ClassifyDao  extends JpaRepository<Classify, String> {
 
     @Query("select classify from Classify classify where isDelete=false and parentClassifyId=:parentClassifyId")
     List<Classify> findSubClassifiesByParentClassifyId(@Param(value = "parentClassifyId") String parentClassifyId);
+
+    @Query("select classify from Classify classify where isDelete=false and parentClassifyId='' order by createDate")
+    List<Classify> findAllFirstLevelClassifies();
 }
