@@ -237,14 +237,9 @@
                         <div class="widget">
                             <h3>TagCloud</h3>
                             <div class="tagcloud clearfix">
-                                <a href="#">Spring</a>
-                                <a href="#">数据结构</a>
-                                <a href="#">Docker</a>
-                                <a href="#">Kong</a>
-                                <a href="#">Quartz</a>
-                                <a href="#">Spring Boot</a>
-                                <a href="#">Redis</a>
-                                <a href="#">OAuth2</a>
+                                {% for tag in data.tags %}
+                                    <a href="#">{{tag.name}}</a>
+                                {% endfor %}
                             </div><!-- End .tagcloud -->
                         </div><!-- End .widget -->
                         

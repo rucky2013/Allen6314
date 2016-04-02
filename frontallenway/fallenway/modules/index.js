@@ -7,8 +7,6 @@ var Config = require('../config/globalconfig.js');
 var config = new Config();
 
 router.get('', function(req, res, next) {
-    var _result = [];
-
     async.waterfall([
             //请求 分类 数据
             function(callback){
@@ -19,9 +17,7 @@ router.get('', function(req, res, next) {
                         if(returnData.statusCode != 0){
                             console.log('request for getFirstLevelClassifies fail!');
                          } else {
-                         var data = {'classifies':returnData.data.classifies};
-                         _result.push(data);
-                         callback(null,data);
+                            callback(null,returnData.data);
                         }
                      } else {
                          console.log('request for getFirstLevelClassifies fail!');
@@ -29,13 +25,44 @@ router.get('', function(req, res, next) {
                 });
             //请求 主页文章 数据
             },function(data,callback){
+                /*request(config.getBackendUrlPrefix() + "classify/find-all-first-level-classifies",function(error,response,body){*/
+                    //if(!error && response.statusCode == 200){
+                        //var returnData = JSON.parse(body);
+
+                        //if(returnData.statusCode != 0){
+                            //console.log('request for getFirstLevelClassifies fail!');
+                         //} else {
+                         //var data = {'classifies':returnData.data.classifies};
+                         //_result.push(data);
+                         //callback(null,data);
+                        //}
+                     //} else {
+                         //console.log('request for getFirstLevelClassifies fail!');
+                     //}
+                /*});*/
+
                 callback(null,data);
             //请求 标签 数据
             },function(data,callback){
-                callback(null,data);
+                request(config.getBackendUrlPrefix() + "tag/find-all-tags",function(error,response,body){
+                    if(!error && response.statusCode == 200){
+                        var returnData = JSON.parse(body);
+
+                        if(returnData.statusCode != 0){
+                            console.log('request for getFirstLevelClassifies fail!');
+                         } else {
+                         data.tags = returnData.data.tags;
+                         callback(null,data);
+                        }
+                     } else {
+                         console.log('request for getFirstLevelClassifies fail!');
+                     }
+                });
             }
     ],function(err,result){
         console.log('err = '+ err + ',result = ' + JSON.stringify(result));
+        console.log('###### = ' + result.tags);
+
         res.render('index',{'data':result});
     });
 });

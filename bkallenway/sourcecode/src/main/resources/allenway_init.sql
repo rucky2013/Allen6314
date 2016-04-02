@@ -7,3 +7,10 @@ INSERT INTO tb_admin(id,is_delete,birthday,email,github,nick_name,password,qq,sa
 insert into tb_classify(id,is_delete,name,parent_classify_id) values('aaac4e63-da8b-4def-a86c-6543d80a8a59',FALSE,'技术 Technique','');
 insert into tb_classify(id,is_delete,name,parent_classify_id) values('aaac4e63-da8b-4def-a86c-6543d80a8a58',FALSE,'杂谈 Talk','');
 insert into tb_classify(id,is_delete,name,parent_classify_id) values('aaac4e63-da8b-4def-a86c-6543d80a8a57',FALSE,'生活 Life','');
+
+
+#加入默认Tag
+insert into tb_tag(id,is_delete,name) values('aaac4e63-da8b-4def-a86c-7543d80a8a59',FALSE,'Spring Boot');
+insert into tb_tag(id,is_delete,name) values('aaac4e63-da8b-4def-a86c-8543d80a8a59',FALSE,'RabbitMQ');
+insert into tb_tag(id,is_delete,name) values('aaac4e63-da8b-4def-a86c-9543d80a8a59',FALSE,'Redis');
+
