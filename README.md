@@ -13,6 +13,8 @@ just a personal blog
 # frontallenway（前端部分）
 
 - 大体技术：nodejs(express + swig)
+- 细节的地方
+  - 使用 async 异步编程
 
 # 启动
 

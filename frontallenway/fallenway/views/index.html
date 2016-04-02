@@ -227,9 +227,9 @@
                             <h3>Categories</h3>
                             <ul class="links">
                                 <li><a href="/"><i class="fa fa-angle-right"></i>主页 Index </a></li>
-                                <li><a href=""><i class="fa fa-angle-right"></i>技术 Technique (8)</a></li>
-                                <li><a href=""><i class="fa fa-angle-right"></i>杂谈 Talk (7)</a></li>
-                                <li><a href=""><i class="fa fa-angle-right"></i>生活 Life (5)</a></li>
+                                {% for classify in data.classifies %}
+                                <li><a href=""><i class="fa fa-angle-right"></i>{{classify.name}} ({{classify.articleNum}})</a></li>
+                                {% endfor %}
                                 <li><a href="/aboutme"><i class="fa fa-angle-right"></i>关于 About Me</a></li>
                             </ul>
                         </div><!-- End .widget -->

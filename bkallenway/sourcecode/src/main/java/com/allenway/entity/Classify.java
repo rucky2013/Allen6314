@@ -22,4 +22,6 @@ public class Classify  extends BaseEntity {
     private String name;
 
     private String parentClassifyId;
+
+    private int articleNum = 0;  //该分类下的文章数量
 }

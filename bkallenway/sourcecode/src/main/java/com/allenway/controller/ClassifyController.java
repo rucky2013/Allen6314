@@ -145,13 +145,15 @@ public class ClassifyController {
      * 查找所有的一级目录
      * @return
      */
-    @RequestMapping(value = "find-all-first-level-classifies",method = RequestMethod.GET)
+    @RequestMapping(value = "/find-all-first-level-classifies",method = RequestMethod.GET)
     public Object findAllFirstLevelClassifies(){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
         List<Classify> classifies = classifyService.findAllFirstLevelClassifies();
 
         returnTemplate.addData("classifies",classifies);
+
+        log.info("findAllFirstLevelClassifies function ... return data = {}.",returnTemplate.toString());
 
         return returnTemplate;
 

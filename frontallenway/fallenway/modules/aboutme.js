@@ -1,20 +1,26 @@
 var express = require('express');
-var router = express.Router();
-
 var request = require('request');
+var Config = require('../config/globalconfig.js');
+
+var config = new Config();
+var router = express.Router();
 
 router.get('',function(req,res,next){
 
-	var url = "http://localhost:8080/admin/find-admin";
+	var url = config.getBackendUrlPrefix() + "admin/find-admin";
 
 	var admin;
 
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			admin = JSON.parse(body).data.admin;
+            var data = JSON.parse(body).data;
+            if(data.statusCode != 0){
+                console.log("request for /admin/find-admin error!");
+            }
+			admin = data.admin;
 			res.render('aboutme',{admin:admin});
 		} else {
-			console.log("request for http://localhost:8080/admin/getadmin error !");
+			console.log("request for /admin/find-admin error !");
 		}
 	})
 
