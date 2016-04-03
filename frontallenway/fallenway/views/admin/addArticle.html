@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="/editorMd/css/editormd.min.css" />
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/allenicon.ico" media="screen" />
+
+    <style type="text/css">
+	   .table>tbody>tr>td {
+	    	border-top: none;
+	    }
+    </style>
+</head>
+<body style="background-color:#f6f6f6">  
+	<div style="margin:10px;">
+		<div style="float:left">  
+			Title:&nbsp;&nbsp;<input class = "form-control" style="display:inline;width:300px;" type = "text" id="title">
+		</div>
+		<div style="float:right">  
+			<a class="btn btn-primary" href="/">Back</a>
+		</div>
+		<div style="clear:both">
+			
+		</div>
+		
+	</div>
+	<div id="editormd" style="min-height:600px;">
+	    <textarea style="display:none;" id="mdData" >### Hello Editor.md !</textarea>
+	</div>
+
+	<div style="margin-left:10px">
+		<table class="table" style="width:inherit">
+			<tr>
+				<td style="padding-top:13px;">Classify</td>
+				<td>
+					<select class = "form-control" style="display:inline;width:300px;" id="classifyId">
+						{% for classify in classifies %}
+							<option value="{{classify.id}}"> {{classify.name}} </option>
+                        {% endfor %}
+						
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding-top:13px;">Tag</td>
+				<td>
+					<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag1">
+					<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag2">
+					<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag3">
+				</td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-primary" href="/">Back</a></td>
+				<td>
+					<button class="btn btn-primary" onclick="doAdd()">Publish</button>
+					&nbsp;&nbsp;&nbsp;<span style = "color:red" id = "publishWarn"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="footer" style="min-height:50px;">
+		
+	</div>
+
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/editorMd/editormd.min.js"></script>
+	<script type="text/javascript">
+	    $(function() {
+	        var editor = editormd("editormd", {
+	            path : "/editorMd/lib/" // Autoload modules mode, codemirror, marked... dependents libs path
+	        });
+
+	        /*
+	        // or
+	        var editor = editormd({
+	            id   : "editormd",
+	            path : "../lib/"
+	        });
+	        */
+	    })
+
+	    function doAdd(){
+
+	    	if(validData()){
+		    	var url = "/addArticle/doAdd";
+
+		    	var data = {
+		    		"title":$('#title').val(),
+		    		"mdData":$('#mdData').val(),
+		    		"classifyId":$('#classifyId').val(),
+		    		"tag1":$('#tag1').val(),
+		    		"tag2":$('#tag2').val(),
+		    		"tag3":$('#tag3').val()
+		    	}
+
+		    	$.post(url,data,function(data,status){
+
+		    		console.log("data1,status = " + data + " " + status);
+		    		if (status == "success" && data == "success") {
+		    			
+		    			var url = "/"
+		    			window.location.href = url;
+		    		} else {
+		    			alert("服务器保存出错，请备份稍后再次保存！");
+		    		}
+		    	})
+	    	} else {
+	    		;
+	    	}
+	    }
+
+	    function validData(){
+	    	var valid = true;
+
+	    	var title = $('#title').val();
+	    	if(title == null || title == "" || title.trim() == null){
+	    		valid =  false;
+	    		$('#publishWarn').append("title不能为空或者只为空格！！");
+	    	} else {
+	    		;
+	    	}
+
+	    	return valid;
+	    }
+	</script>
+</body>
+</html>

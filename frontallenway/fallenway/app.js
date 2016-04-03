@@ -8,11 +8,15 @@ var engines = require('consolidate');
 app.engine('html',engines.swig);
 app.set('view engine','html');
 
-var index = require('./modules/index');
-var aboutme = require('./modules/aboutme');
+//游客
+var visitor_index = require('./modules/visitor/index');
+var visitor_aboutme = require('./modules/visitor/aboutme');
+app.use('/',visitor_index);
+app.use('/visitor/aboutme',visitor_aboutme);
 
-app.use('/',index);
-app.use('/aboutme',aboutme);
+//管理员
+var admin_article = require('./modules/admin/article.js');
+app.use('/admin/article',admin_article);
 
 var port = 7000;
 app.listen(port);

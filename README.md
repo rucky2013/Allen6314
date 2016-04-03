@@ -18,6 +18,6 @@ just a personal blog
 
 # 启动
 
-- 后端配置文件： bkallenway/sourcecode/src/main/resources/application.yml
-- 数据库建库脚本： bkallenway/sourcecode/src/main/resources/allenway.sql
-- 数据库初始化脚本：bkallenway/sourcecode/src/main/resources/allenway_init.sql
+- 后端配置文件： bkallenway/sourcecode/boot/src/main/resources/application.yml
+- 数据库建库脚本： bkallenway/sourcecode/boot/src/main/resources/allenway.sql
+- 数据库初始化脚本：bkallenway/sourcecode/boot/src/main/resources/allenway_init.sql
