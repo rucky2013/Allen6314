@@ -1,6 +1,7 @@
 package com.allenway.visitor.serviceImpl;
 
 import com.allenway.visitor.dao.TagDao;
+import com.allenway.visitor.entity.Tag;
 import com.allenway.visitor.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,10 @@ public class TagServiceImpl implements TagService {
     @Override
     public Object findAllTags() {
         return tagagDao.findAllTags();
+    }
+
+    @Override
+    public Tag findTagById(String tagId) {
+        return tagagDao.findTagById(tagId);
     }
 }

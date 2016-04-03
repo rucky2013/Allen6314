@@ -36,7 +36,7 @@
 				<td style="padding-top:13px;">Classify</td>
 				<td>
 					<select class = "form-control" style="display:inline;width:300px;" id="classifyId">
-						{% for classify in classifies %}
+						{% for classify in data.classifies %}
 							<option value="{{classify.id}}"> {{classify.name}} </option>
                         {% endfor %}
 						
@@ -46,10 +46,17 @@
 			<tr>
 				<td style="padding-top:13px;">Tag</td>
 				<td>
-					<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag1">
-					<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag2">
-					<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag3">
-				</td>
+					<!--<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag1">-->
+					<!--<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag2">-->
+					<!--<input class = "form-control" style="display:inline;width:97px;" type = "text" id="tag3">-->
+				    <select class = "form-control" style="display:inline;width:300px;" id="tagId">
+						{% for tag in data.tags %}
+							<option value="{{tag.id}}"> {{tag.name}} </option>
+                        {% endfor %}
+						
+					</select>
+
+                </td>
 			</tr>
 			<tr>
 				<td><a class="btn btn-primary" href="/">Back</a></td>
@@ -85,27 +92,25 @@
 	    function doAdd(){
 
 	    	if(validData()){
-		    	var url = "/addArticle/doAdd";
+		    	var url = "addArticle/doAdd";
 
 		    	var data = {
 		    		"title":$('#title').val(),
 		    		"mdData":$('#mdData').val(),
 		    		"classifyId":$('#classifyId').val(),
-		    		"tag1":$('#tag1').val(),
-		    		"tag2":$('#tag2').val(),
-		    		"tag3":$('#tag3').val()
+		    		"tagId":$('#tagId').val(),
 		    	}
 
 		    	$.post(url,data,function(data,status){
 
 		    		console.log("data1,status = " + data + " " + status);
-		    		if (status == "success" && data == "success") {
-		    			
-		    			var url = "/"
-		    			window.location.href = url;
-		    		} else {
-		    			alert("服务器保存出错，请备份稍后再次保存！");
-		    		}
+			  <!--      if (status == "success" && data == "succe-->ss") {
+						
+						<!--var url = "/"-->
+						<!--window.location.href = url;-->
+					<!--} else {-->
+						<!--alert("服务器保存出错，请备份稍后再次保存！");-->
+			  <!--  -->    }
 		    	})
 	    	} else {
 	    		;
@@ -113,6 +118,7 @@
 	    }
 
 	    function validData(){
+            $('#publishWarn').empty();
 	    	var valid = true;
 
 	    	var title = $('#title').val();

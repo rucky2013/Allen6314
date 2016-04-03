@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by wuhuachuan on 16/3/9.
@@ -23,4 +23,11 @@ public class Article extends BaseEntity {
     private String content;
     private String classifyId;  //属于哪个分类
     private int readNum = 0;
+
+    @ManyToMany
+    @JoinTable( name = "tb_article_tag",
+                joinColumns = @JoinColumn(name = "article_id"),
+                inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags; //一个文章对应多个tag
+
 }

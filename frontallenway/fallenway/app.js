@@ -8,6 +8,10 @@ var engines = require('consolidate');
 app.engine('html',engines.swig);
 app.set('view engine','html');
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 //游客
 var visitor_index = require('./modules/visitor/index');
 var visitor_aboutme = require('./modules/visitor/aboutme');
