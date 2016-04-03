@@ -1,6 +1,6 @@
 package controller;
 
-import com.allenway.controller.TagController;
+import com.allenway.visitor.controller.TagController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

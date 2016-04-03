@@ -1,7 +1,7 @@
 package controller;
 
-import com.allenway.controller.ArticleController;
-import com.allenway.entity.Article;
+import com.allenway.visitor.controller.ArticleController;
+import com.allenway.visitor.entity.Article;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package controller;
 
-import com.allenway.controller.AdminController;
-import com.allenway.entity.Admin;
-import com.allenway.service.AdminService;
+import com.allenway.infrustructure.controller.AdminController;
+import com.allenway.infrustructure.entity.Admin;
+import com.allenway.infrustructure.service.AdminService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

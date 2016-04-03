@@ -1,8 +1,8 @@
 package controller;
 
-import com.allenway.controller.ClassifyController;
-import com.allenway.entity.Classify;
-import com.allenway.service.ClassifyService;
+import com.allenway.visitor.controller.ClassifyController;
+import com.allenway.visitor.entity.Classify;
+import com.allenway.visitor.service.ClassifyService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
