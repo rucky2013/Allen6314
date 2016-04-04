@@ -11,13 +11,17 @@ router.get('', function(req, res, next) {
             //请求 分类 数据
             function(callback){
                 request(config.getBackendUrlPrefix() + "classify/find-all-first-level-classifies",function(error,response,body){
+
+
                     if(!error && response.statusCode == 200){
                         var returnData = JSON.parse(body);
 
                         if(returnData.statusCode != 0){
                             console.log('request for getFirstLevelClassifies fail!');
                          } else {
-                            callback(null,returnData.data);
+                            console.log('returnData = ' + JSON.stringify(returnData.data));
+
+                             callback(null,returnData.data);
                         }
                      } else {
                          console.log('request for getFirstLevelClassifies fail!');
@@ -63,7 +67,7 @@ router.get('', function(req, res, next) {
         console.log('err = '+ err + ',result = ' + JSON.stringify(result));
         console.log('###### = ' + result.tags);
 
-        res.render('index',{'data':result});
+        res.render('visitor/index',{'data':result});
     });
 });
 

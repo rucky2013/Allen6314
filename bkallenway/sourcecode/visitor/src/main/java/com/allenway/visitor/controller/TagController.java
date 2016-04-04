@@ -30,6 +30,9 @@ public class TagController {
     public Object findAllTags(){
         ReturnTemplate returnTemplate = new ReturnTemplate();
         returnTemplate.addData("tags",tagService.findAllTags());
+
+        log.info("findAllTags function... returnData = {}.",returnTemplate.toString());
+
         return  returnTemplate;
     }
 }

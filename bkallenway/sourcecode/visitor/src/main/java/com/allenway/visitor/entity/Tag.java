@@ -24,6 +24,6 @@ public class Tag extends BaseEntity {
     private String name;
 
     @ManyToMany(mappedBy = "tags")
-    private List<Article> articles;
+    private transient List<Article> articles;
 
 }

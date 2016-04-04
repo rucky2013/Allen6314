@@ -19,7 +19,9 @@ app.use('/',visitor_index);
 app.use('/visitor/aboutme',visitor_aboutme);
 
 //管理员
+var admin_index = require('./modules/admin/index.js');
 var admin_article = require('./modules/admin/article.js');
+app.use('/admin',admin_index);
 app.use('/admin/article',admin_article);
 
 var port = 7000;
