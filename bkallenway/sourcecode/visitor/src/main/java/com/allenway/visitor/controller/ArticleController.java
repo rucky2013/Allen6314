@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wuhuachuan on 16/3/9.
@@ -63,6 +64,9 @@ public class ArticleController {
      * @return
      */
     private boolean validArticleParam(Article article,HttpServletRequest request) {
+
+        log.info("validArticleParam function ... article = {}, tagId = {}.",article,request.getParameter("tagId"));
+
         if(StringUtils.isEmpty(article.getTitle()) ||
                 StringUtils.isEmpty(article.getContent()) ||
                 StringUtils.isEmpty(article.getClassifyId()) ||
@@ -102,8 +106,8 @@ public class ArticleController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/find-article-by-id",method = RequestMethod.POST)
-    public Object findArticleById(@RequestParam String id) {
+    @RequestMapping(value = "/find-article-by-id",method = RequestMethod.GET)
+    public Object findArticleById(String id) {
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
         if(ValidUtils.validIdParam(id)){
@@ -119,4 +123,16 @@ public class ArticleController {
         }
         return returnTemplate;
     }
+
+    /**
+     * 获取全部的文章
+     * @return
+     */
+    @RequestMapping(value = "/get-all-articles",method = RequestMethod.GET)
+    public Object getAllArticles(){
+        ReturnTemplate returnTemplate = new ReturnTemplate();
+        returnTemplate.addData("articles",articleService.findAllArticles());
+        return  returnTemplate;
+    }
+
 }

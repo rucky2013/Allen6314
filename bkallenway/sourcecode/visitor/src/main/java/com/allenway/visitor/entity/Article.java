@@ -24,7 +24,7 @@ public class Article extends BaseEntity {
     private String classifyId;  //属于哪个分类
     private int readNum = 0;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable( name = "tb_article_tag",
                 joinColumns = @JoinColumn(name = "article_id"),
                 inverseJoinColumns = @JoinColumn(name = "tag_id"))

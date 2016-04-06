@@ -1,0 +1,32 @@
+<html>
+<head></head>
+<body>
+<table border = '1'>
+    <tr>
+        <td>Title</td>
+        <td>Content</td>
+        <td>操作1</td>
+        <td>操作2</td>
+    </tr>
+{% for article in articles %}
+    <tr>
+        <td>
+            {% autoescape false %}{{article.title}}{% endautoescape %}
+        </td>
+        <td>
+            {% autoescape false %}{{article.content |}}{% endautoescape %}
+        </td>
+        <td>
+            <form id = "deleteArticleForm" action = "deleteArticle" method = "post">
+                <input type = "hidden" value = "{{article.id}}" name = "id">
+                <input type = "submit" value = "删除">
+            </form>
+        </td>
+        <td>
+            <a href = "modifyArticle?id={{article.id}}">修改文章</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+<body>
+</html>

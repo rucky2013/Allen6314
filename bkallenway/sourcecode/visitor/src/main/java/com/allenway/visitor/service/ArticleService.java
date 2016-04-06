@@ -16,4 +16,6 @@ public interface ArticleService {
     void delete(Article article);
 
     List<Article> findArticlesByClassifyId(String id);
+
+    Object findAllArticles();
 }

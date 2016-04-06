@@ -17,4 +17,7 @@ public interface ArticleDao extends JpaRepository<Article, String> {
 
     @Query("select article from Article article where isDelete=false and classifyId=:classifyId")
     List<Article> findArticlesByClassifyId(@Param(value = "classifyId") String classifyId);
+
+    @Query("select article from Article article where isDelete=false")
+    List<Article> findAllArticles();
 }

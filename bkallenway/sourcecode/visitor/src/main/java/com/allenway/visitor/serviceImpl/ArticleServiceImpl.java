@@ -38,4 +38,9 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> findArticlesByClassifyId(String id) {
         return articleDao.findArticlesByClassifyId(id);
     }
+
+    @Override
+    public Object findAllArticles() {
+        return articleDao.findAllArticles();
+    }
 }

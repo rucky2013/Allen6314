@@ -73,4 +73,9 @@ public class ArticleControllerTest {
         id = "8ab4783c-958c-4c65-8894-cfd6a8de9e56";
         assertTrue("id is correct, but couldn't find the article !!", articleController.findArticleById(id).toString().contains("article"));
     }
+
+    @Test
+    public void getAllArticles() throws Exception{
+        assertTrue("getALlArticles fail", articleController.getAllArticles().toString().contains("articles"));
+    }
 }
