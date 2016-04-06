@@ -48,6 +48,26 @@
                 <div class="row">
                     <div class="col-md-9 col-md-push-3">
 
+                        {% for article in data.articles %}
+                        <article class="entry entry-simple">
+
+                            <h2 class="entry-title"><a href="single.html">{{article.title}}</a></h2>
+
+                            <footer class="entry-footer clearfix">
+                                <span class="entry-cats">
+                                    <span class="entry-label">Categories:</span><a href="#">{{article.tags[0].name}}</a>
+                                </span><!-- End .entry-tags -->
+                                <span class="entry-separator">/</span>
+                                <a href="#" class="entry-comments">10 Comments</a>
+                                <span class="entry-separator">/</span>
+                                by <a href="#" class="entry-author">Allen</a>
+                                
+                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
+                            </footer>
+
+                        </article>
+                        {% endfor  %}
+
                         <article class="entry entry-simple">
 
                             <h2 class="entry-title"><a href="single.html">Ipsa quasi praesentium eos officiis nam molestiae facere.</a></h2>

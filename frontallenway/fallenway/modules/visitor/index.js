@@ -29,23 +29,20 @@ router.get('', function(req, res, next) {
                 });
             //请求 主页文章 数据
             },function(data,callback){
-                /*request(config.getBackendUrlPrefix() + "classify/find-all-first-level-classifies",function(error,response,body){*/
-                    //if(!error && response.statusCode == 200){
-                        //var returnData = JSON.parse(body);
+                request(config.getBackendUrlPrefix() + "article/get-all-articles",function(error,response,body){
+                    if(!error && response.statusCode == 200){
+                        var returnData = JSON.parse(body);
 
-                        //if(returnData.statusCode != 0){
-                            //console.log('request for getFirstLevelClassifies fail!');
-                         //} else {
-                         //var data = {'classifies':returnData.data.classifies};
-                         //_result.push(data);
-                         //callback(null,data);
-                        //}
-                     //} else {
-                         //console.log('request for getFirstLevelClassifies fail!');
-                     //}
-                /*});*/
-
-                callback(null,data);
+                        if(returnData.statusCode != 0){
+                            console.log('request for articles fail!');
+                         } else {
+                         data.articles = returnData.data.articles;
+                         callback(null,data);
+                        }
+                     } else {
+                         console.log('request for get articles fail!');
+                     }
+                });
             //请求 标签 数据
             },function(data,callback){
                 request(config.getBackendUrlPrefix() + "tag/find-all-tags",function(error,response,body){
@@ -53,20 +50,18 @@ router.get('', function(req, res, next) {
                         var returnData = JSON.parse(body);
 
                         if(returnData.statusCode != 0){
-                            console.log('request for getFirstLevelClassifies fail!');
+                            console.log('request for get tags fail!');
                          } else {
                          data.tags = returnData.data.tags;
                          callback(null,data);
                         }
                      } else {
-                         console.log('request for getFirstLevelClassifies fail!');
+                         console.log('request for get tags fail!');
                      }
                 });
             }
     ],function(err,result){
         console.log('err = '+ err + ',result = ' + JSON.stringify(result));
-        console.log('###### = ' + result.tags);
-
         res.render('visitor/index',{'data':result});
     });
 });
