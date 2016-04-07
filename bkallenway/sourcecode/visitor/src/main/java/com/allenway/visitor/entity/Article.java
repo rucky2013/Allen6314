@@ -21,7 +21,9 @@ public class Article extends BaseEntity {
 
     private String title;
     private String content;
-    private String classifyId;  //属于哪个分类
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Classify classify;  //属于哪个分类
     private int readNum = 0;
 
     @ManyToMany(fetch = FetchType.EAGER)

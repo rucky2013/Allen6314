@@ -14,7 +14,7 @@
             {% autoescape false %}{{article.title}}{% endautoescape %}
         </td>
         <td>
-            {% autoescape false %}{{article.content |}}{% endautoescape %}
+            {% autoescape false %}{{article.content}}{% endautoescape %}
         </td>
         <td>
             <form id = "deleteArticleForm" action = "deleteArticle" method = "post">

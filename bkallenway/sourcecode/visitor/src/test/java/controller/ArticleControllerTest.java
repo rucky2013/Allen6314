@@ -30,13 +30,13 @@ public class ArticleControllerTest {
 
         //测试正常保存
         article.setTitle("testArticle");
-        article.setClassifyId("1234567890");
+//        article.setClassifyId("1234567890");
         article.setContent("testContent");
 //        assertTrue("add article fail!!!",articleController.saveArticle(article).toString().contains("\"statusCode\":0"));
 
         //测试缺少参数情况下的保存
         article.setTitle("");
-        article.setClassifyId("");
+//        article.setClassifyId("");
         article.setContent("");
 //        assertTrue("return string doesn't contain statusCode 2000!",articleController.saveArticle(article).toString().contains("2000"));
     }

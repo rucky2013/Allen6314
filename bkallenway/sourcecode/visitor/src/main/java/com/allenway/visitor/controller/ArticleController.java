@@ -3,9 +3,11 @@ package com.allenway.visitor.controller;
 import com.allenway.commons.exception.DataNotFoundException;
 import com.allenway.utils.response.ReturnTemplate;
 import com.allenway.visitor.entity.Article;
+import com.allenway.visitor.entity.Classify;
 import com.allenway.visitor.entity.Tag;
 import com.allenway.visitor.service.ArticleService;
 import com.allenway.utils.validparam.ValidUtils;
+import com.allenway.visitor.service.ClassifyService;
 import com.allenway.visitor.service.TagService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +36,9 @@ public class ArticleController {
     private ArticleService articleService;
 
     @Autowired
+    private ClassifyService classifyService;
+
+    @Autowired
     private TagService tagService;
 
     /**
@@ -47,10 +52,21 @@ public class ArticleController {
         ReturnTemplate returnTemplate = new ReturnTemplate();
         if(validArticleParam(article,request)){
 
-            ArrayList<Tag> tags = new ArrayList<Tag>();
-            tags.add(tagService.findTagById(request.getParameter("tagId")));
-            article.setTags(tags);
+            Classify classify = classifyService.findClassifyById(request.getParameter("classifyId"));
+            if(classify == null){
+                throw new DataNotFoundException();
+            } else {
+                article.setClassify(classify);
+            }
 
+            Tag tag = tagService.findTagById(request.getParameter("tagId"));
+            if(tag == null){
+                throw new DataNotFoundException();
+            } else {
+                ArrayList<Tag> tags = new ArrayList<Tag>();
+                tags.add(tag);
+                article.setTags(tags);
+            }
             articleService.save(article);
         } else {
             throw new IllegalArgumentException("param is invalid!");
@@ -69,7 +85,7 @@ public class ArticleController {
 
         if(StringUtils.isEmpty(article.getTitle()) ||
                 StringUtils.isEmpty(article.getContent()) ||
-                StringUtils.isEmpty(article.getClassifyId()) ||
+                StringUtils.isEmpty(request.getParameter("classifyId")) ||
                 request.getParameter("tagId").isEmpty()){
             return false;
         } else {
