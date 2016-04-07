@@ -1,133 +1,24 @@
-<!DOCTYPE html>
-<!--[if IE 9]> <html class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <title>Allen - Talk is cheap</title>
-        <meta name="description" content="Multipurpose, premium, bootstrap based bussiness, corporate, portfolio, blog, onepage, creative, magazine, personal, landing, coming soon html5 css3 template">
 
-        <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="stylesheet" href="/stylesheets/animate.css">
-        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-        <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
-        <link rel="stylesheet" href="/stylesheets/mediaelementplayer.css">
-        <link rel="stylesheet" href="/stylesheets/style.css">
-        <link rel="stylesheet" id="color-scheme" href="/stylesheets/colors/green.css">
+{% extends 'common/header_leftSide.html' %}
 
-        <link rel="shortcut icon" type="image/x-icon" href="/images/allenicon.ico" media="screen" />
+{% block subMainContent  %}
+    {% for article in data.articles %}
+        <article class="entry entry-simple">
 
-        <script src="/javascripts/modernizr.js"></script>
+            <h2 class="entry-title"><a href="/visitor/article/getArticleDetail?id={{article.id}}">{{article.title}}</a></h2>
 
-        <script src="/javascripts/jquery.min.js"></script>
-	    
-    </head>
-    <body>
-    <div id="wrapper" style="background-color:#f6f6f6">
-        <div id="content" role="main">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-md-push-3">
-                        {% for article in data.articles %}
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="/visitor/article/getArticleDetail?id={{article.id}}">{{article.title}}</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">{{article.tags[0].name}}</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">10 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Allen</a>
+            <footer class="entry-footer clearfix">
+                <span class="entry-cats">
+                    <span class="entry-label">Categories:</span>
+                    <a href="#">{{article.tags[0].name}}</a>
+                </span><!-- End .entry-tags -->
+                <span class="entry-separator">/</span>
+                <a href="#" class="entry-comments">10 Comments</a>
+                <span class="entry-separator">/</span>
+                by <a href="#" class="entry-author">Allen</a>
                                 
-                                <a href="getArticleDetail?id={{article.id}}" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-                        {% endfor  %}
-
-                        <div class="mb60"></div><!-- space -->
-
-                        <nav class="pagination-container">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-                                    </a>
-                                </li>
-                                <li  class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-
-                    </div><!-- End .col-md-9 -->
-
-                    <div class="mb60 clearfix visible-sm visible-xs"></div><!-- space -->
-
-                    <aside class="col-md-3 sidebar col-md-pull-9" role="complementary"> 
-
-                        <div class="widget">
-                            <h3>Categories</h3>
-                            <ul class="links">
-                                <li><a href="/"><i class="fa fa-angle-right"></i>主页 Index </a></li>
-                                {% for classify in data.classifies %}
-                                <li><a href=""><i class="fa fa-angle-right"></i>{{classify.name}} ({{classify.articleNum}})</a></li>
-                                {% endfor %}
-                                <li><a href="/aboutme"><i class="fa fa-angle-right"></i>关于 About Me</a></li>
-                            </ul>
-                        </div><!-- End .widget -->
-
-                        <div class="widget">
-                            <h3>TagCloud</h3>
-                            <div class="tagcloud clearfix">
-                                {% for tag in data.tags %}
-                                    <a href="#">{{tag.name}}</a>
-                                {% endfor %}
-                            </div><!-- End .tagcloud -->
-                        </div><!-- End .widget -->
-                        
-                    </aside><!-- End .col-md-3 -->
-
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-
-            <div class="mb20 hidden-xs hidden-sm"></div><!-- space -->
-
-        </div><!-- End #content -->
-
-        
-
-    </div><!-- End #wrapper -->
-    <a href="#top" id="scroll-top" title="Back to Top"><i class="fa fa-angle-up"></i></a>
-	<!-- END -->
-
-    <!-- Smoothscroll -->
-    <script src="/javascripts/smoothscroll.js"></script>
-
-    <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/javascripts/jquery.hoverIntent.min.js"></script>
-    <script src="/javascripts/jquery.nicescroll.min.js"></script>
-    <script src="/javascripts/waypoints.min.js"></script>
-    <script src="/javascripts/waypoints-sticky.min.js"></script>
-    <script src="/javascripts/jquery.debouncedresize.js"></script>
-    <script src="/javascripts/retina.min.js"></script>
-    <script src="/javascripts/owl.carousel.min.js"></script>
-    <script src="/javascripts/jflickrfeed.min.js"></script>
-    <script src="/javascripts/twitter/jquery.tweet.min.js"></script>
-    <script src="/javascripts/jquery.magnific-popup.min.js"></script>
-    <script src="/javascripts/mediaelement-and-player.min.js"></script>
-    <script src="/javascripts/main.js"></script>
-	
-    </body>
-</html>
+                <a href="getArticleDetail?id={{article.id}}" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
+            </footer>
+        </article>
+    {% endfor  %}
+{% endblock %}
