@@ -1,0 +1,75 @@
+
+    {% extends  'header.html' %}
+
+    {% block subIncludeFileBeforeBody %}
+        
+
+        <link rel="stylesheet" href="/stylesheets/animate.css">
+        <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
+        <link rel="stylesheet" href="/stylesheets/mediaelementplayer.css">
+        <link rel="stylesheet" id="color-scheme" href="/stylesheets/colors/green.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/allenicon.ico" media="screen" />
+        <script src = "/javascripts/modernizr.js" ></script>
+        <script src = "/javascripts/jquery.min.js" ></script>
+
+        {% block subIncludeFileBeforeBody1 %}{% endblock %}
+    {% endblock %}
+
+
+    {% block mainContent %}
+        <div class = "col-md-9 col-md-push-3">
+            {% block subMainContent  %}{% endblock %}
+        </div>
+
+        <div class = "md60 clearfix visible-sm visible-xs"></div>
+
+        <aside class = "col-md-3 sidebar col-md-pull-9" role = "complementary">
+            <div class = "widget">
+                <h3>Categories</h3>
+                <ul class = "links">
+                    <li><a href = "/"><i class = "fa fa-angle-right"></i>主页 Index </a></li>
+
+                    {% for classify in data.classifies %}
+                        <li><a href = "/"><i class = "fa fa-angle-right"></li>{{classify.name}} {{classify.articleNum}}</a></li>
+                    {% endfor %}
+
+                    <li><a href = "/aboutme"><i class = "fa fa-angle-right"></i>关于 About Me </a></li>
+                </ul>
+            </div>
+
+            <div class = "widget">
+                <h3>TagCloud</h3>
+                <div class = "tagcloud clearfix">
+                    {% for tag in data.tags %}
+                        <a href = "#">{{tag.name}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </aside>
+    {% endblock %}
+
+    
+    {% block subIncludeFileAfterBody %}
+        {% block subIncludeFileAfterBody1 %}{% endblock %}
+    <!-- Smoothscroll -->
+    <script src="/javascripts/smoothscroll.js"></script>
+
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery.hoverIntent.min.js"></script>
+    <script src="/javascripts/jquery.nicescroll.min.js"></script>
+    <script src="/javascripts/waypoints.min.js"></script>
+    <script src="/javascripts/waypoints-sticky.min.js"></script>
+    <script src="/javascripts/jquery.debouncedresize.js"></script>
+    <script src="/javascripts/retina.min.js"></script>
+    <script src="/javascripts/owl.carousel.min.js"></script>
+    <script src="/javascripts/jflickrfeed.min.js"></script>
+    <script src="/javascripts/twitter/jquery.tweet.min.js"></script>
+    <script src="/javascripts/jquery.magnific-popup.min.js"></script>
+    <script src="/javascripts/mediaelement-and-player.min.js"></script>
+    <script src="/javascripts/main.js"></script>
+
+    {% endblock %}
+
+
+
+

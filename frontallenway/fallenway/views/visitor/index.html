@@ -25,33 +25,14 @@
     </head>
     <body>
     <div id="wrapper" style="background-color:#f6f6f6">
-    
         <div id="content" role="main">
-            <div class="page-header larger larger-desc" style="background-color:#f6f6f6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1>Allen Way <small class="hidden-xs"></small></h1>
-                            <p class="page-header-desc">Talk is cheap , show me your code !</p>
-                        </div><!-- End .col-md-6 -->
-                        <div class="col-md-6">
-                            <ol class="breadcrumb">
-                                <li><a href="/">Index</a></li>
-                                <!-- <li class="active">Blog</li> -->
-                            </ol>
-                        </div><!-- End .col-md-6 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-            </div><!-- End .page-header -->
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-md-push-3">
-
                         {% for article in data.articles %}
                         <article class="entry entry-simple">
 
-                            <h2 class="entry-title"><a href="single.html">{{article.title}}</a></h2>
+                            <h2 class="entry-title"><a href="/visitor/article/getArticleDetail?id={{article.id}}">{{article.title}}</a></h2>
 
                             <footer class="entry-footer clearfix">
                                 <span class="entry-cats">
@@ -62,158 +43,11 @@
                                 <span class="entry-separator">/</span>
                                 by <a href="#" class="entry-author">Allen</a>
                                 
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
+                                <a href="getArticleDetail?id={{article.id}}" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
                             </footer>
 
                         </article>
                         {% endfor  %}
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Ipsa quasi praesentium eos officiis nam molestiae facere.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Design</a>, <a href="#">Nature</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">10 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Eon</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Sed et metus feugiat, auctor est a, aliquam tellus. Nam enim ex.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Design</a>, <a href="#">Nature</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">10 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Eon</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Aliquam at enim vel enim scelerisque tempor.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Basketbal</a>, <a href="#">Lebron</a>, <a href="#">Kobe</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">33 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Eon</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Class aptent taciti sociosqu ad litora torquent per.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Nature</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">8 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Sarah</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Cras dictum lectus a sagittisr malesuada nisi sit.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Photography</a>, <a href="#">Nature</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">22 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Admin</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Zlaes aptent taciti sociosqu ad litora torquent per.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Nature</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">8 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Sarah</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Proin interdum bibendum porta. Praesent venenatis.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Nature</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">8 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Sarah</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
-
-
-                        <article class="entry entry-simple">
-
-                            <h2 class="entry-title"><a href="single.html">Nec malesuada magna lacus et lorem snteger molli.</a></h2>
-
-                            <footer class="entry-footer clearfix">
-                                <span class="entry-cats">
-                                    <span class="entry-label">Categories:</span><a href="#">Life</a>, <a href="#">Nature</a>
-                                </span><!-- End .entry-tags -->
-                                <span class="entry-separator">/</span>
-                                <a href="#" class="entry-comments">8 Comments</a>
-                                <span class="entry-separator">/</span>
-                                by <a href="#" class="entry-author">Sarah</a>
-                                
-                                <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                            </footer>
-
-                        </article>
 
                         <div class="mb60"></div><!-- space -->
 
