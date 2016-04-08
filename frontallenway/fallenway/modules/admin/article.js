@@ -44,7 +44,7 @@ router.get('/addArticle',function(req,res,next){
             }
     ],function(err,result){
         console.log('err = ' + err + ' ,result = ' + JSON.stringify(result));
-        res.render('admin/addArticle',{'data':result});
+        res.render('admin/article/add_updateArticle',{'data':result});
     })
 });
 
@@ -71,33 +71,14 @@ router.post('/addArticle/doAdd',function(req,res,next){
     });
 });
 
-router.get('/getAllArticles',function(req,res,next){
-    request(config.getBackendUrlPrefix() + "article/get-all-articles",function(error,response,body){
-        if(!error && response.statusCode == 200 ){
-            var returnData = JSON.parse(body);
-            if(returnData.statusCode == 0){
-                var articles = returnData.data.articles;
-                articles.forEach(function(item){
-                   var html = md(item.content);
-                   item.content = html;
-                });
-
-                res.render('admin/getAllArticles',{'articles':articles});
-            } else {
-                console.log('request for getting first level classifies fail!');
-            }
-        } else {
-            console.log('request for getting first level classifies fail!!!!!!!');
-        }
-    });
-});
-
-router.post('/deleteArticle',function(req,res,next){
+router.get('/deleteArticle',function(req,res,next){
 
     var url = config.getBackendUrlPrefix() + "article/delete-article-by-id";
-    var data = {id:req.body.id};
+    var data = {id:req.query.id};
+
     request.post({url:url,form:data},function(error,response,body){
-        res.redirect('/admin/article/getAllArticles');
+
+        res.redirect('/admin/article/articleManage');
     });
 });
 
@@ -149,8 +130,29 @@ router.get('/modifyArticle',function(req,res,next){
             }
     ],function(err,result){
         console.log('err = ' + err + ' ,result = ' + JSON.stringify(result));
-        res.render('admin/modifyArticle',{'data':result});
+        res.render('admin/article/add_updateArticle',{'data':result});
     })
+});
+
+router.get('/articleManage',function(req,res,next){
+    request(config.getBackendUrlPrefix() + "article/get-all-articles",function(error,response,body){
+        if(!error && response.statusCode == 200 ){
+            var returnData = JSON.parse(body);
+            if(returnData.statusCode == 0){
+                var articles = returnData.data.articles;
+                articles.forEach(function(item){
+                   var html = md(item.content);
+                   item.content = html;
+                });
+
+                res.render('admin/article/articleManageIndex',{'articles':articles});
+            } else {
+                console.log('request for getting first level classifies fail!');
+            }
+        } else {
+            console.log('request for getting first level classifies fail!!!!!!!');
+        }
+    });
 });
 
 module.exports = router;

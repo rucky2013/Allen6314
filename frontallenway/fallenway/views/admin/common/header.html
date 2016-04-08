@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Allen - Talk is cheap</title>
+
+
+        <link rel = "stylesheet" href = "/stylesheets/bootstrap.min.css">
+        <link rel = "stylesheet" href = "/stylesheets/style.css">
+
+        {% block subIncludeFileBeforeBody %}{% endblock %}
+    </head>
+    <body>
+        <div id = "wrapper" stype = "background-color:#f6f6f6">
+            <div id = "content" role = "main">
+                <div class="page-header larger larger-desc" style="background-color:#f6f6f6">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1><a href = "/admin">Allen Way</a> <small class="hidden-xs"></small></h1>
+                                <p class="page-header-desc">Talk is cheap , show me your code !</p>
+                            </div>
+                            <div class="col-md-6">
+                                <ol class="breadcrumb">
+                                    <li><a href="/">Index</a></li>
+                                    <li class="active">Blog</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <div class = "container">
+                    <div id = "row">
+                        {% block mainContent  %}{% endblock %}
+                    </div>
+                </div>
+
+                <div class = "mb20 hidden-xs hiddden-sm"></div>
+
+            </div>
+        </div>
+    
+    <a href="#top" id="scroll-top" title="Back to Top"><i class="fa fa-angle-up" style = "padding-top:7px"></i></a>
+    
+    {% block subIncludeFileAfterBody %}{% endblock %}
+    </body>
+</html>
+
+
+
+

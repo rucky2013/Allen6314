@@ -1,0 +1,94 @@
+
+    {% extends  '../common/header.html' %}
+
+    {% block subIncludeFileBeforeBody %}
+        
+
+        <link rel="stylesheet" href="/stylesheets/animate.css">
+        <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
+        <link rel="stylesheet" href="/stylesheets/mediaelementplayer.css">
+        <link rel="stylesheet" id="color-scheme" href="/stylesheets/colors/green.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/allenicon.ico" media="screen" />
+        <script src = "/javascripts/modernizr.js" ></script>
+        <script src = "/javascripts/jquery.min.js" ></script>
+
+        <style type = "text/css">
+            .table tbody > tr > td {
+                padding:0;
+            }
+            .table>thead>tr>td {
+                padding:0;
+            }
+            .table tbody > tr > td:first-child {
+                padding:0px;
+            }
+        </style>
+
+        {% block subIncludeFileBeforeBody1 %}{% endblock %}
+    {% endblock %}
+
+
+    {% block mainContent %}
+        <div class = "col-md-9 col-md-push-3">
+            <h3>文章列表</h3>
+            <table class = "table table-striped">
+                <thead>
+                    <td>Title</td>
+                    <td>Classify</td>
+                    <td>Operation1</td>
+                    <td>Operation2</td>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td>{{article.title}}</td>
+                        <td>{{article.classify.name}}</td>
+                        <td><a href = "/admin/article/modifyArticle?id={{article.id}}">修改文章</a></td>
+                        <td><a href = "/admin/article/deleteArticle?id={{article.id}}">删除文章</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "md60 clearfix visible-sm visible-xs"></div>
+
+        <aside class = "col-md-3 sidebar col-md-pull-9" role = "complementary">
+            <div class = "widget">
+                <h3>文章管理</h3>
+                <ul class = "links">
+                    <li><a href = "/admin/article/addArticle"><i class = "fa fa-angle-right"></i>添加文章</a></li>
+                    <li><a href = "/admin"><i class = "fa fa-angle-right"></i>返回</a></li>
+                </ul>
+            </div>
+        </aside>
+    {% endblock %}
+
+
+
+
+    
+    {% block subIncludeFileAfterBody %}
+        {% block subIncludeFileAfterBody1 %}{% endblock %}
+    <!-- Smoothscroll -->
+    <script src="/javascripts/smoothscroll.js"></script>
+
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery.hoverIntent.min.js"></script>
+    <script src="/javascripts/jquery.nicescroll.min.js"></script>
+    <script src="/javascripts/waypoints.min.js"></script>
+    <script src="/javascripts/waypoints-sticky.min.js"></script>
+    <script src="/javascripts/jquery.debouncedresize.js"></script>
+    <script src="/javascripts/retina.min.js"></script>
+    <script src="/javascripts/owl.carousel.min.js"></script>
+    <script src="/javascripts/jflickrfeed.min.js"></script>
+    <script src="/javascripts/twitter/jquery.tweet.min.js"></script>
+    <script src="/javascripts/jquery.magnific-popup.min.js"></script>
+    <script src="/javascripts/mediaelement-and-player.min.js"></script>
+    <script src="/javascripts/main.js"></script>
+
+    {% endblock %}
+
+
+
+
