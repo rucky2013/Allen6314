@@ -1,6 +1,7 @@
 package com.allenway.visitor.entity;
 
 import com.allenway.commons.entity.BaseEntity;
+import com.google.gson.annotations.Expose;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -22,14 +23,14 @@ public class Article extends BaseEntity {
     private String title;
     private String content;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Classify classify;  //属于哪个分类
-    private int readNum = 0;
+    private String classifyId;
+    private transient String classifyName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable( name = "tb_article_tag",
-                joinColumns = @JoinColumn(name = "article_id"),
-                inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tags; //一个文章对应多个tag
+    private transient List<Tag> tags;
+
+    private transient List<Comment> comments;
+    private transient int commentNum;
+
+    private int readNum = 0;
 
 }

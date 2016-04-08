@@ -2,6 +2,7 @@ package com.allenway.infrustructure.entity;
 
 import com.allenway.commons.entity.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 
 //callSuper = true 表示 父类的toString 也会打印
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
 @Table(name = "tb_admin")

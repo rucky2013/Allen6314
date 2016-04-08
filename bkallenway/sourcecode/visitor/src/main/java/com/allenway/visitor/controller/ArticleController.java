@@ -2,13 +2,9 @@ package com.allenway.visitor.controller;
 
 import com.allenway.commons.exception.DataNotFoundException;
 import com.allenway.utils.response.ReturnTemplate;
-import com.allenway.visitor.entity.Article;
-import com.allenway.visitor.entity.Classify;
-import com.allenway.visitor.entity.Tag;
-import com.allenway.visitor.service.ArticleService;
+import com.allenway.visitor.entity.*;
+import com.allenway.visitor.service.*;
 import com.allenway.utils.validparam.ValidUtils;
-import com.allenway.visitor.service.ClassifyService;
-import com.allenway.visitor.service.TagService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -41,6 +38,12 @@ public class ArticleController {
     @Autowired
     private TagService tagService;
 
+    @Autowired
+    private Article_TagService article_tagService;
+
+    @Autowired
+    private CommentService commentService;
+
     /**
      * 添加文章(包括新增的和修改的)
      * @param article
@@ -56,21 +59,20 @@ public class ArticleController {
             if(classify == null){
                 throw new DataNotFoundException();
             } else {
-                article.setClassify(classify);
+                article.setClassifyId(classify.getId());
             }
 
             Tag tag = tagService.findTagById(request.getParameter("tagId"));
             if(tag == null){
                 throw new DataNotFoundException();
             } else {
-                ArrayList<Tag> tags = new ArrayList<Tag>();
-                tags.add(tag);
-                article.setTags(tags);
+                Article art = articleService.save(article);
+                article_tagService.save(new Article_Tag(art.getId(),tag.getId()));
             }
-            articleService.save(article);
         } else {
             throw new IllegalArgumentException("param is invalid!");
         }
+
         return returnTemplate;
     }
 
@@ -109,6 +111,16 @@ public class ArticleController {
             if(article == null){
                 throw new DataNotFoundException("article == null");
             } else {
+                //删除文章和 tag 的联系
+                article_tagService.deleteByArticleId(article.getId());
+
+                //删除文章和 classify 的联系
+                //由于article 维护两者的关系,所以无需处理
+
+                //删除文件和 comment 的联系
+                commentService.deleteByArticleId(article.getId());
+
+                //删除文章
                 articleService.delete(article);
             }
         } else {
@@ -132,6 +144,7 @@ public class ArticleController {
             if(article == null){
                 throw new DataNotFoundException("article == null");
             } else {
+                setArticleTagClassifyComment(article);
                 returnTemplate.addData("article",article);
             }
         } else {
@@ -146,9 +159,49 @@ public class ArticleController {
      */
     @RequestMapping(value = "/get-all-articles",method = RequestMethod.GET)
     public Object getAllArticles(){
+        log.info("getAllArticles function ... ");
         ReturnTemplate returnTemplate = new ReturnTemplate();
-        returnTemplate.addData("articles",articleService.findAllArticles());
+
+        List<Article> articles = articleService.findAllArticles();
+
+        articles
+            .parallelStream()
+            .forEach(param -> setArticleTagClassifyComment(param));
+
+        returnTemplate.addData("articles",articles);
+
+        log.info("getAllArticles function ... returnData  = " + returnTemplate.toString() );
+
         return  returnTemplate;
+    }
+
+    /**
+     * 给文章设置 Tag, Classify,Comment,因为这些都是手动维护，不是数据库帮维护
+     * @param article
+     */
+    public void setArticleTagClassifyComment(Article article) {
+
+        //得到该文章的 classify
+        Classify classify = classifyService.findClassifyById(article.getClassifyId());
+        article.setClassifyName(classify.getName());
+
+        //得到该文章的 tag
+        List<Article_Tag> article_tags = article_tagService.findByArticleId(article.getId());
+        final List<Tag> tags = new LinkedList<Tag>();
+
+        article_tags
+                .parallelStream()
+                .forEach(param ->{
+                    Tag tag = tagService.findTagById(param.getTagId());
+                    tags.add(tag);
+                });
+
+        article.setTags(tags);
+
+        //得到该文章的 comment
+        List<Comment> comments = commentService.findByArticleId(article.getId());
+        article.setComments(comments);
+        article.setCommentNum(comments.size());
     }
 
 }

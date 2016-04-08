@@ -19,8 +19,8 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleDao articleDao;
 
     @Override
-    public void save(Article article) {
-        articleDao.saveAndFlush(article);
+    public Article save(Article article) {
+        return articleDao.saveAndFlush(article);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Object findAllArticles() {
+    public List<Article> findAllArticles() {
         return articleDao.findAllArticles();
     }
 }

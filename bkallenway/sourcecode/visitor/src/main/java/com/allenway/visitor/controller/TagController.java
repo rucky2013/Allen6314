@@ -28,11 +28,9 @@ public class TagController {
      */
     @RequestMapping(value = "/find-all-tags",method = RequestMethod.GET)
     public Object findAllTags(){
+
         ReturnTemplate returnTemplate = new ReturnTemplate();
         returnTemplate.addData("tags",tagService.findAllTags());
-
-        log.info("findAllTags function... returnData = {}.",returnTemplate.toString());
-
         return  returnTemplate;
     }
 }

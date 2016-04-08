@@ -8,22 +8,24 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.List;
 
 /**
- * Created by wuhuachuan on 16/3/9.
+ * Created by wuhuachuan on 16/4/8.
  */
 
 @ToString(callSuper = true)
 @Data
 @Entity
-@Table(name = "tb_classify")
+@Table(name = "tb_comment")
 @NoArgsConstructor
-public class Classify  extends BaseEntity {
+public class Comment extends BaseEntity {
 
     private String name;
-    private String parentClassifyId;
-    private int articleNum = 0;  //该分类下的文章数量
+    private String email;
+    private String content;
+
+    private String articleId;
 }

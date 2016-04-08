@@ -1,6 +1,7 @@
 package com.allenway.utils.response;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.Data;
 
 import java.util.HashMap;
@@ -14,8 +15,6 @@ public class ReturnTemplate {
     private int statusCode;  //必须
     private String errorMsg;   // 可选（前端可以从ReturnErrorCode参考表中得出）
     private HashMap<String,Object> data; // 可选
-
-    private static Gson gson = new Gson();
 
     /**
      * 构造函数 : 默认创建是一个成功的请求

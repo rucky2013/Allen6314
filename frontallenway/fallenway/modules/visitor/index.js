@@ -26,9 +26,8 @@ router.get('', function(req, res, next) {
             //请求 主页文章 数据
             },function(data,callback){
                 request(config.getBackendUrlPrefix() + "article/get-all-articles",function(error,response,body){
-                    if(!error && response.statusCode == 200){
+                    if(!error){
                         var returnData = JSON.parse(body);
-
                         if(returnData.statusCode != 0){
                             console.log('request for articles fail!');
                          } else {
@@ -36,7 +35,7 @@ router.get('', function(req, res, next) {
                          callback(null,data);
                         }
                      } else {
-                         console.log('request for get articles fail!');
+                         console.log('request for get articles fail! error = ' + error);
                      }
                 });
             //请求 标签 数据
@@ -56,6 +55,7 @@ router.get('', function(req, res, next) {
                 });
             }
     ],function(err,result){
+        console.log('url = /visitor, data = ' + JSON.stringify(result) );
         res.render('visitor/index',{'data':result});
     });
 });

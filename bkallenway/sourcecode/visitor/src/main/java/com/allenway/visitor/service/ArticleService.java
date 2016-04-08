@@ -9,7 +9,7 @@ import java.util.List;
  * Created by wuhuachuan on 16/3/9.
  */
 public interface ArticleService {
-    void save(Article article);
+    Article save(Article article);
 
     Article findArticleById(String id);
 
@@ -17,5 +17,5 @@ public interface ArticleService {
 
     List<Article> findArticlesByClassifyId(String id);
 
-    Object findAllArticles();
+    List<Article> findAllArticles();
 }
