@@ -149,12 +149,15 @@ router.get('/articleManage',function(req,res,next){
                 });
 
                 var path = "<li><a href = \"/admin\">Index</a></li>" +
-                "<li><a href = \"/admin/article/articleManage\" class = \"active\">Article Manage</a></li>";
+                "<li>Article Manage</li>";
 
                 var data = {
                     'articles':articles,
                     'path':path
                 }
+
+                console.log('returnData = ' + JSON.stringify(data));
+
                 res.render('admin/article/articleManageIndex',{'data':data});
             } else {
                 console.log('request for getting first level classifies fail!');

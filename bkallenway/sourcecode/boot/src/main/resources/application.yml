@@ -14,4 +14,8 @@ spring:
             hibernate.show_sql: false
             hibernate.format_sql: true
 
+infrastructure:
+    # swagger:true 打开 swagger:off 关闭   /  网址http://localhost:8080/swagger-ui.html
+    swagger: true
+
 

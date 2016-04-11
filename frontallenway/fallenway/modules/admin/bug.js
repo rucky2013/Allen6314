@@ -13,7 +13,15 @@ router.get('',function(req,res,next){
             if(returnData.statusCode != 0){
                 console.log('request for operation/get-records fail,returnData.statusCode = ' + returnData.statusCode);
             } else {
-                res.render('admin/bug/bugIndex',{'bugs':returnData.data.bugs});
+                var path = "<li><a href = \"/admin\">Index</a></li>" +
+                "<li>Bug Manage</li>";
+
+                var data = {
+                    'bugs':returnData.data.bugs,
+                    'path':path
+                }
+
+                res.render('admin/bug/bugIndex',{'data':data});
             }
         } else {
             console.log('request for operation/get-records fail!!');
