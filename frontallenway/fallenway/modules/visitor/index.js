@@ -55,9 +55,17 @@ router.get('', function(req, res, next) {
                 });
             }
     ],function(err,result){
+        var path = "<li><a href = \"/visitor\" class = \"active\">Index</a></li>";
+        result.path = path;
+
         console.log('url = /visitor, data = ' + JSON.stringify(result) );
+
         res.render('visitor/index',{'data':result});
     });
+});
+
+router.get('/visitor',function(req,res,next){
+     res.redirect('/');
 });
 
 module.exports = router;

@@ -10,10 +10,11 @@ import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.joda.time.LocalDateTime;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.*;
+import javax.persistence.Convert;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Created by wuhuachuan on 16/3/3.

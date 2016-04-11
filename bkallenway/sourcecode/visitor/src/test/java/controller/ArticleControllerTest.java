@@ -78,4 +78,9 @@ public class ArticleControllerTest {
     public void getAllArticles() throws Exception{
         assertTrue("getALlArticles fail", articleController.getAllArticles().toString().contains("articles"));
     }
+
+    @Test
+    public void findRecommendArticles() throws  Exception{
+        assertTrue("findRecommendArticles fail", articleController.findRecommendArticles().toString().contains("articles"));
+    }
 }

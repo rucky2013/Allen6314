@@ -35,6 +35,18 @@ public class ExceptionHandlerBean extends ResponseEntityExceptionHandler {
     }
 
     /**
+     * 空指针异常
+     * @param ex
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @ExceptionHandler({NullPointerException.class})
+    public ResponseEntity<Object> handleNullPointerException(RuntimeException ex, WebRequest request) throws IOException {
+        return getResponseEntity(ex,request, ReturnStatusCode.NullPointerException);
+    }
+
+    /**
      * 数据找不到异常
      * @param ex
      * @param request
@@ -71,6 +83,8 @@ public class ExceptionHandlerBean extends ResponseEntityExceptionHandler {
         ReturnTemplate returnTemplate = new ReturnTemplate();
         returnTemplate.setStatusCode(specificException);
         returnTemplate.setErrorMsg(ex.getMessage());
+
+        log.info(ex.getCause().getMessage());
 
         return handleExceptionInternal(ex, returnTemplate,
                 new HttpHeaders(), HttpStatus.OK, request);

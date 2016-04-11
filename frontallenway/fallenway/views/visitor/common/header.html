@@ -6,6 +6,8 @@
 
         <link rel = "stylesheet" href = "/stylesheets/bootstrap.min.css">
         <link rel = "stylesheet" href = "/stylesheets/style.css">
+        
+        <script src = "/javascripts/jquery.min.js" ></script>
 
         {% block subIncludeFileBeforeBody %}{% endblock %}
     </head>
@@ -16,13 +18,14 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
-                                <h1><a href = "/">Allen Way </a><small class="hidden-xs"></small></h1>
+                                <h1><a href = "/visitor">Allen Way </a><small class="hidden-xs"></small></h1>
                                 <p class="page-header-desc">Talk is cheap , show me the code !</p>
                             </div>
                             <div class="col-md-6">
                                 <ol class="breadcrumb">
-                                    <li><a href="/">Index</a></li>
-                                    <li class="active">Blog</li>
+                                    {% autoescape false %} {{data.path}}{% endautoescape %}
+                                    <!--<li>{{data.path}}</li>-->
+                                    <!--<li class="active">Blog</li>-->
                                 </ol>
                             </div>
                         </div>

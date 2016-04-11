@@ -6,6 +6,7 @@
 
         <link rel = "stylesheet" href = "/stylesheets/bootstrap.min.css">
         <link rel = "stylesheet" href = "/stylesheets/style.css">
+        <script src = "/javascripts/jquery.min.js" ></script>
 
         {% block subIncludeFileBeforeBody %}{% endblock %}
     </head>
@@ -21,8 +22,9 @@
                             </div>
                             <div class="col-md-6">
                                 <ol class="breadcrumb">
-                                    <li><a href="/">Index</a></li>
-                                    <li class="active">Blog</li>
+                                    {% autoescape %} {{data.path}} {% endautoescape %}
+                                    <!--<li><a href="/">Index</a></li>-->
+                                    <!--<li class="active">Blog</li>-->
                                 </ol>
                             </div>
                         </div>

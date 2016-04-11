@@ -13,6 +13,7 @@ public enum ReturnStatusCode {
     RuntimeException(1000),
     DataNotFoundException(1001),
     IllegalArgumentException(1002),
+    NullPointerException(1003),
 
     /**
      * 业务逻辑出错

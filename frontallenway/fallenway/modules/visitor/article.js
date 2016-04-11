@@ -11,7 +11,6 @@ router.get('/getArticleDetail',function(req,res,next){
     async.waterfall([
             //请求 文章 数据
             function(callback){
-                console.log('req.query.id = ' + req.query.id);
                 request(config.getBackendUrlPrefix() + "article/find-article-by-id?id=" + req.query.id,function(error,response,body){
                     if(!error && response.statusCode == 200){
                         var returnData = JSON.parse(body);
@@ -27,6 +26,21 @@ router.get('/getArticleDetail',function(req,res,next){
                          console.log('request for get articles fail!');
                      }
                 });
+            //请求推荐文章的数量
+            /*},function(data,callback){*/
+                //request(config.getBackendUrlPrefix() + "article/get-recommend-articles",function(error,response,body){
+                    //if(!error && response.statusCode == 200){
+                        //var returnData = JSON.parse(body);
+                        //if(returnData.statusCode != 0){
+                            //console.log('request for get tags fail!');
+                         //} else {
+                         //data.recommendArticles= returnData.data.recommendArticles;
+                         //callback(null,data);
+                        //}
+                     //} else {
+                         //console.log('request for get tags fail!');
+                     //}
+                /*});*/
             //请求 标签 数据
             },function(data,callback){
                 request(config.getBackendUrlPrefix() + "tag/find-all-tags",function(error,response,body){
@@ -44,6 +58,11 @@ router.get('/getArticleDetail',function(req,res,next){
                 });
             }
     ],function(err,result){
+
+        var path = "<li><a href = \"/visitor\">Index</a></li>" +
+            "<li class = \"active\">Article Detail</li>";
+        result.path = path;
+
         console.log('url = visitor/article/getArticleDetail, error = '+ err + ' ,data = ' + JSON.stringify(result));
         res.render('visitor/articleDetail',{'data':result});
     });

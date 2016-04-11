@@ -31,8 +31,15 @@
         <article class="entry single">
             <span class="entry-date">24<span>Feb</span></span>
             <span class="entry-format"><img src="/myImg/dingdangmao.png" style = "width:80px;height:90px;" /><!--<i class="fa fa-file-image-o"></i>--></span>
-            <h2 class="entry-title">{{data.article.title}}</h2>
-
+            <div>
+                <div style = "float:left">
+                <h2 class="entry-title">{{data.article.title}}</h2>
+                </div>
+                <div style = "float:right">
+                    <input type="button" class="btn btn-dark" value="Back" onclick = "window.history.go(-1);">
+                </div>
+                <div style = "clear:both"></div>
+            </div>
             <div class="entry-content">
                 {% autoescape false %}{{data.article.content}}{% endautoescape %}
             </div>
@@ -54,7 +61,7 @@
 
                 <!--<figure class="pull-left"><img src="myImg/weixin.png" class="img-circle" alt="Eon Dean"></figure>-->
                 <div class="author-content" style = "margin-left:0px;">
-                    <span>如果您认为还不错，要不 </span> <button class = "btn btn-primary btn-sm" onclick = "showDonate()">小额赞助</button>下，哈哈
+                    <span>如果您认为还不错，要不 </span> <button class = "btn btn-primary btn-sm" onclick = "showDonate()">小额赞助</button> 下，哈哈,你最帅/美 O(∩_∩)O~
                     <br/>
                     <div id = "showDonate" style = "display:none">
                         <div style = "float:left">
@@ -69,111 +76,111 @@
             </div><!-- End .about-author -->
         </article>
                         
-        <h3 class="mb30 title-underblock custom">Related Posts</h3>
-        <div class="blog-related-carousel owl-carousel small-nav">
-            <article class="entry entry-box">
-                <div class="entry-media">
-                    <figure>
-                        <a href="single.html">
-                            <img src="/images/blog/post1.jpg" alt="Entry Title">
-                        </a>
-                    </figure>
-                </div><!-- End .entry-media -->
+        <!--<h3 class="mb30 title-underblock custom">Related Posts</h3>-->
+        <!--<div class="blog-related-carousel owl-carousel small-nav">-->
+            <!--<article class="entry entry-box">-->
+                <!--<div class="entry-media">-->
+                    <!--<figure>-->
+                        <!--<a href="single.html">-->
+                            <!--<img src="/images/blog/post1.jpg" alt="Entry Title">-->
+                        <!--</a>-->
+                    <!--</figure>-->
+                <!--</div>[> End .entry-media <]-->
 
-                <div class="entry-content-wrapper">
-                    <span class="entry-date">20<span>Feb</span></span>
-                    <span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;"><!--<i class="fa fa-file-image-o"></i>--></span>
+                <!--<div class="entry-content-wrapper">-->
+                    <!--<span class="entry-date">20<span>Feb</span></span>-->
+                    <!--<span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;">[><i class="fa fa-file-image-o"></i><]</span>-->
 
-                    <h2 class="entry-title"><a href="single.html">推荐文章1.</a></h2>
-                    <div class="entry-content">
-                        <p>推荐文章简介...</p>
-                    </div>
-                </div>
+                    <!--<h2 class="entry-title"><a href="single.html">推荐文章1.</a></h2>-->
+                    <!--<div class="entry-content">-->
+                        <!--<p>推荐文章简介...</p>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <footer class="entry-footer clearfix">
-                    <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Cars</a>, <a href="#">Design</a>
-                    </span>
-                    <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                </footer>
-            </article>
-            <article class="entry entry-box">
-                <div class="entry-media embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="//player.vimeo.com/video/30173582?color=ffffff" width="500" height="281" allowfullscreen></iframe>
-                </div><!-- End .entry-media -->
+                <!--<footer class="entry-footer clearfix">-->
+                    <!--<span class="entry-cats">-->
+                        <!--<span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Cars</a>, <a href="#">Design</a>-->
+                    <!--</span>-->
+                    <!--<a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>-->
+                <!--</footer>-->
+            <!--</article>-->
+            <!--<article class="entry entry-box">-->
+                <!--<div class="entry-media embed-responsive embed-responsive-16by9">-->
+                    <!--<iframe class="embed-responsive-item" src="//player.vimeo.com/video/30173582?color=ffffff" width="500" height="281" allowfullscreen></iframe>-->
+                <!--</div>[> End .entry-media <]-->
 
-                <div class="entry-content-wrapper">
-                    <span class="entry-date">10<span>Feb</span></span>
-                    <span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;"><!--<i class="fa fa-file-image-o"></i>--></span>
+                <!--<div class="entry-content-wrapper">-->
+                    <!--<span class="entry-date">10<span>Feb</span></span>-->
+                    <!--<span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;">[><i class="fa fa-file-image-o"></i><]</span>-->
 
-                    <h2 class="entry-title"><a href="single.html">推荐文章2.</a></h2>
-                    <div class="entry-content">
-                        <p>推荐文章简介...</p>
-                    </div>
-                </div>
+                    <!--<h2 class="entry-title"><a href="single.html">推荐文章2.</a></h2>-->
+                    <!--<div class="entry-content">-->
+                        <!--<p>推荐文章简介...</p>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <footer class="entry-footer clearfix">
-                    <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Life</a>
-                    </span><!-- End .entry-tags -->
+                <!--<footer class="entry-footer clearfix">-->
+                    <!--<span class="entry-cats">-->
+                        <!--<span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Life</a>-->
+                    <!--</span>[> End .entry-tags <]-->
 
-                    <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                </footer>
-            </article>
-            <article class="entry entry-box">
-                <div class="entry-media">
-                    <figure>
-                        <a href="single.html">
-                            <img src="/images/blog/post4.jpg" alt="Entry Title">
-                        </a>
-                    </figure>
-                </div><!-- End .entry-media -->
+                    <!--<a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>-->
+                <!--</footer>-->
+            <!--</article>-->
+            <!--<article class="entry entry-box">-->
+                <!--<div class="entry-media">-->
+                    <!--<figure>-->
+                        <!--<a href="single.html">-->
+                            <!--<img src="/images/blog/post4.jpg" alt="Entry Title">-->
+                        <!--</a>-->
+                    <!--</figure>-->
+                <!--</div>[> End .entry-media <]-->
 
-                <div class="entry-content-wrapper">
-                    <span class="entry-date">06<span>Feb</span></span>
-                    <span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;"><!--<i class="fa fa-file-image-o"></i>--></span>
+                <!--<div class="entry-content-wrapper">-->
+                    <!--<span class="entry-date">06<span>Feb</span></span>-->
+                    <!--<span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;">[><i class="fa fa-file-image-o"></i><]</span>-->
 
-                    <h2 class="entry-title"><a href="single.html">推荐文章3.</a></h2>
-                    <div class="entry-content">
-                        <p>推荐文章简介...</p>
-                    </div><!-- End .entry-content -->
-                </div><!-- End .entry-content-wrapper -->
+                    <!--<h2 class="entry-title"><a href="single.html">推荐文章3.</a></h2>-->
+                    <!--<div class="entry-content">-->
+                        <!--<p>推荐文章简介...</p>-->
+                    <!--</div>[> End .entry-content <]-->
+                <!--</div>[> End .entry-content-wrapper <]-->
 
-                <footer class="entry-footer clearfix">
-                    <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Nature</a>, <a href="#">Design</a>
-                    </span><!-- End .entry-tags -->
-                    <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                </footer>
-            </article>
-            <article class="entry entry-box">
-                <div class="entry-media">
-                    <figure>
-                        <a href="single.html">
-                            <img src="/images/blog/post5.jpg" alt="Entry Title">
-                        </a>
-                    </figure>
-                </div><!-- End .entry-media -->
+                <!--<footer class="entry-footer clearfix">-->
+                    <!--<span class="entry-cats">-->
+                        <!--<span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Nature</a>, <a href="#">Design</a>-->
+                    <!--</span>[> End .entry-tags <]-->
+                    <!--<a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>-->
+                <!--</footer>-->
+            <!--</article>-->
+            <!--<article class="entry entry-box">-->
+                <!--<div class="entry-media">-->
+                    <!--<figure>-->
+                        <!--<a href="single.html">-->
+                            <!--<img src="/images/blog/post5.jpg" alt="Entry Title">-->
+                        <!--</a>-->
+                    <!--</figure>-->
+                <!--</div>[> End .entry-media <]-->
 
-                <div class="entry-content-wrapper">
-                    <span class="entry-date">02<span>Feb</span></span>
-                    <span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;"><!--<i class="fa fa-file-image-o"></i>--></span>
+                <!--<div class="entry-content-wrapper">-->
+                    <!--<span class="entry-date">02<span>Feb</span></span>-->
+                    <!--<span class="entry-format"><img src = "/myImg/dingdangmao.png" style = "width:50px;height:50px;">[><i class="fa fa-file-image-o"></i><]</span>-->
 
-                    <h2 class="entry-title"><a href="single.html">推荐文章4.</a></h2>
-                    <div class="entry-content">
-                        <p>推荐文章4简介..</p>
-                    </div><!-- End .entry-content -->
-                </div><!-- End .entry-content-wrapper -->
+                    <!--<h2 class="entry-title"><a href="single.html">推荐文章4.</a></h2>-->
+                    <!--<div class="entry-content">-->
+                        <!--<p>推荐文章4简介..</p>-->
+                    <!--</div>[> End .entry-content <]-->
+                <!--</div>[> End .entry-content-wrapper <]-->
 
-                <footer class="entry-footer clearfix">
-                    <span class="entry-cats">
-                        <span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Travel</a>, <a href="#">Life</a>
-                    </span><!-- End .entry-tags -->
+                <!--<footer class="entry-footer clearfix">-->
+                    <!--<span class="entry-cats">-->
+                        <!--<span class="entry-label"><i class="fa fa-tag"></i></span><a href="#">Travel</a>, <a href="#">Life</a>-->
+                    <!--</span>[> End .entry-tags <]-->
 
-                    <a href="#" class="entry-readmore text-right">Read More <i class="fa fa-angle-right"></i></a>
-                </footer>
-            </article>
-        </div><!-- End .blog-related-carousel -->
+                    <!--<a href="#" class="entry-readmore text-right">Read More<i class="fa fa-angle-right"></i></a>-->
+                <!--</footer>-->
+            <!--</article>-->
+        <!--</div><][> End .blog-related-carousel -->
         <div class="comments">
             <h3 class="mb35 title-underblock custom">{{data.article.commentNum}} Comment(s)</h3>
             <ul class="comments-list media-list">
@@ -189,39 +196,6 @@
                     </div><!-- End .media-body -->
                 </li>
                 {% endfor %}
-
-                <!--<li class="media">-->
-                    <!--<div class="media-left">-->
-                        <!--<img class="media-object img-circle" src="/images/blog/dean.jpg" alt="Dean Hunter">-->
-                    <!--</div>[> End .media-left <]-->
-                    <!--<div class="media-body">-->
-                        <!--<h4 class="media-heading">Dean Hunter<span class="comment-date">(10 February 2015 - 17:25)</span></h4>-->
-                        <!--<a href="#" class="reply-link">Reply </a>-->
-                        <!--<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>-->
-                        <!--<ul>-->
-                            <!--<li class="media">-->
-                                <!--<div class="media-left">-->
-                                    <!--<img class="media-object img-circle" src="/images/blog/sarah.jpg" alt="Sarah Hunter">-->
-                                <!--</div>[> End .media-left <]-->
-                                <!--<div class="media-body">-->
-                                    <!--<h4 class="media-heading">Sarah Hunter<span class="comment-date">(11 February 2015 - 09:11)</span></h4>-->
-                                    <!--<a href="#" class="reply-link">Reply </a>-->
-                                    <!--<p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>-->
-                                <!--</div>[> End .media-body <]-->
-                            <!--</li>-->
-                        <!--</ul>-->
-                    <!--</div>[> End .media-body <]-->
-                <!--</li>-->
-                <!--<li class="media">-->
-                    <!--<div class="media-left">-->
-                        <!--<img class="media-object img-circle" src="/images/blog/john.jpg" alt="Sarah Hunter">-->
-                    <!--</div>[> End .media-left <]-->
-                    <!--<div class="media-body">-->
-                        <!--<h4 class="media-heading">John Doe<span class="comment-date">(08 February 2015 - 21:11)</span></h4>-->
-                        <!--<a href="#" class="reply-link">Reply </a>-->
-                        <!--<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in fac sed odio dui.</p>-->
-                    <!--</div>[> End .media-body <]-->
-                <!--</li>-->
             </ul>
         </div><!-- End .comments -->
                         
@@ -249,7 +223,13 @@
                 </div><!-- End .from-group -->
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-dark" value="Post Comment">
+                    <div style = "float:left" >
+                        <input type="submit" class="btn btn-dark" value="Post Comment">
+                    </div>
+                    <div style = "float:right">
+                        <input type="button" class="btn btn-dark" value="Back" onclick = "window.history.go(-1);">
+                    </div>
+                    <div style = "clear:both"></div>
                 </div><!-- End .from-group -->
             </form>
         </div><!-- End #respond -->
@@ -275,8 +255,11 @@
     <script type = "text/javascript">
     
         function showDonate(){
-            console.log('aaa');
-            $('#showDonate').css("display","block");
+            if($('#showDonate').css('display') == 'block'){
+                $('#showDonate').css("display","none");
+            } else if($('#showDonate').css('display') == 'none'){
+                $('#showDonate').css("display","block");
+            }
         }
     </script>
 {% endblock %}

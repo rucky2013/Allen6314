@@ -18,4 +18,7 @@ public interface ArticleService {
     List<Article> findArticlesByClassifyId(String id);
 
     List<Article> findAllArticles();
+
+    //找到推荐的文章
+    List<Article> findRecommendArticles();
 }

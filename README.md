@@ -9,6 +9,9 @@ just a personal blog
   - json的统一返回格式
   - 加密
   - 统一异常处理
+  - 操作记录
+  - 增删权限管理
+  - 错误日志记录
 
 # frontallenway（前端部分）
 

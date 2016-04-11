@@ -10,7 +10,6 @@
         <link rel="stylesheet" id="color-scheme" href="/stylesheets/colors/green.css">
         <link rel="shortcut icon" type="image/x-icon" href="/images/allenicon.ico" media="screen" />
         <script src = "/javascripts/modernizr.js" ></script>
-        <script src = "/javascripts/jquery.min.js" ></script>
 
         {% block subIncludeFileBeforeBody1 %}{% endblock %}
     {% endblock %}
@@ -28,10 +27,11 @@
                 <h3>Categories</h3>
                 <ul class = "links">
                     <li><a href = "/admin/article/articleManage"><i class = "fa fa-angle-right"></i>文章管理 （Article） </a></li>
-                    <li><a href = "/"><i class = "fa fa-angle-right"></i>评论管理 （Comment）</a></li>
-                    <li><a href = "/"><i class = "fa fa-angle-right"></i>标签管理 （Tag）</a></li>
-                    <li><a href = "/"><i class = "fa fa-angle-right"></i>作者管理 （Admin）</a></li>
-                    <li><a href = "/"><i class = "fa fa-angle-right"></i>操作管理 （Operation）</a></li>
+                    <li><a href = "/admin/comment"><i class = "fa fa-angle-right"></i>评论管理 （Comment）</a></li>
+                    <li><a href = "/admin/tag"><i class = "fa fa-angle-right"></i>标签管理 （Tag）</a></li>
+                    <li><a href = "/admin/"><i class = "fa fa-angle-right"></i>作者管理 （Admin）</a></li>
+                    <li><a href = "/admin/operation"><i class = "fa fa-angle-right"></i>操作管理 （Operation）</a></li>
+                    <li><a href = "/admin/bug"><i class = "fa fa-angle-right"></i>错误管理 （Bug）</a></li>
                 </ul>
             </div>
         </aside>

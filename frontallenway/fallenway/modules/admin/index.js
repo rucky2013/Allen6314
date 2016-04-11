@@ -5,7 +5,11 @@ var config = new Config();
 var router = express.Router();
 
 router.get('',function(req,res,next){
-    res.render('admin/index');
+    var path = "<li><a href = \"/admin\" class = \"active\">Index</a></li>";
+    var data = {
+        'path':path
+    };
+    res.render('admin/index',{'data':data});
 });
 
 module.exports = router;

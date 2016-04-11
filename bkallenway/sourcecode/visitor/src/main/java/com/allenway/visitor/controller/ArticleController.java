@@ -2,9 +2,9 @@ package com.allenway.visitor.controller;
 
 import com.allenway.commons.exception.DataNotFoundException;
 import com.allenway.utils.response.ReturnTemplate;
+import com.allenway.utils.validparam.ValidUtils;
 import com.allenway.visitor.entity.*;
 import com.allenway.visitor.service.*;
-import com.allenway.utils.validparam.ValidUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -66,8 +65,16 @@ public class ArticleController {
             if(tag == null){
                 throw new DataNotFoundException();
             } else {
+
+                //如果新增一篇文章,那么该分类的文章 + 1
+                if(article.getId() == null){
+                    classify.setArticleNum(classify.getArticleNum() + 1);
+                    classifyService.save(classify);
+                }
+
                 Article art = articleService.save(article);
                 article_tagService.save(new Article_Tag(art.getId(),tag.getId()));
+
             }
         } else {
             throw new IllegalArgumentException("param is invalid!");
@@ -122,6 +129,11 @@ public class ArticleController {
 
                 //删除文章
                 articleService.delete(article);
+
+                //该分类下的文章 -1
+                Classify classify = classifyService.findClassifyById(article.getClassifyId());
+                classify.setArticleNum(classify.getArticleNum() - 1);
+                classifyService.save(classify);
             }
         } else {
             throw new IllegalArgumentException("Param is invalid!");
@@ -202,6 +214,13 @@ public class ArticleController {
         List<Comment> comments = commentService.findByArticleId(article.getId());
         article.setComments(comments);
         article.setCommentNum(comments.size());
+    }
+
+    @RequestMapping(value = "get-recommend-articles",method = RequestMethod.GET)
+    public Object findRecommendArticles(){
+        ReturnTemplate returnTemplate = new ReturnTemplate();
+        returnTemplate.addData("recommendArticles",articleService.findRecommendArticles());
+        return  returnTemplate;
     }
 
 }

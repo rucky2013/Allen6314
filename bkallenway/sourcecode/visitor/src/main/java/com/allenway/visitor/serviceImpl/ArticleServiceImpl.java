@@ -4,8 +4,12 @@ import com.allenway.visitor.dao.ArticleDao;
 import com.allenway.visitor.entity.Article;
 import com.allenway.visitor.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Predicate;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 /**
@@ -42,5 +46,15 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<Article> findAllArticles() {
         return articleDao.findAllArticles();
+    }
+
+    @Override
+    public List<Article> findRecommendArticles() {
+
+//        CriteriaBuilder criteriaBuilder = new CriteriaBuilder().
+//
+//        QueryDslPredicateExecutor.findAll(Predicate predicate, Pageable pageable);
+//        return articleDao.findRecommendArticles();
+        return null;
     }
 }
