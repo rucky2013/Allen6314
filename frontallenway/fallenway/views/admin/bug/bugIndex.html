@@ -1,0 +1,36 @@
+{% extends '../common/header_leftSide.html' %}
+
+{% block subIncludeFileBeforeBody %}
+        <style type = "text/css">
+            .table tbody > tr > td {
+                padding:0;
+            }
+            .table>thead>tr>td {
+                padding:0;
+            }
+            .table tbody > tr > td:first-child {
+                padding:0px;
+            }
+        </style>
+{% endblock %}
+
+{% block subMainContent  %}
+    <h3>异常列表</h3>
+    <table class = "table table-striped">
+        <thead>
+            <td>BugName&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>requestUrl</td>
+            <td>Date</td>
+         </thead>
+        <tbody>
+            {% for bug in bugs %}
+            <tr>
+                <td>{{bug.ex}}</td>
+                <td>{{bug.requestUrl}}</td>
+                <td>{{bug.createDate}}</td>
+             </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

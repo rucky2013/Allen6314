@@ -24,9 +24,11 @@ app.use('/visitor/aboutme',visitor_aboutme);
 var admin_index = require('./modules/admin/index.js');
 var admin_article = require('./modules/admin/article.js');
 var admin_operation = require('./modules/admin/operation.js');
+var admin_bug = require('./modules/admin/bug.js');
 app.use('/admin',admin_index);
 app.use('/admin/article',admin_article);
 app.use('/admin/operation',admin_operation);
+app.use('/admin/bug',admin_bug);
 
 var port = 7000;
 app.listen(port);

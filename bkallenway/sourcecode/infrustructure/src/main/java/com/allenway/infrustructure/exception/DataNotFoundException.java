@@ -1,4 +1,4 @@
-package com.allenway.commons.exception;
+package com.allenway.infrustructure.exception;
 
 /**
  * Created by wuhuachuan on 16/3/29.

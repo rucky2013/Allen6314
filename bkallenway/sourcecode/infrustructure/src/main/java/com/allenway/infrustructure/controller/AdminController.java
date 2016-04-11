@@ -1,6 +1,6 @@
 package com.allenway.infrustructure.controller;
 
-import com.allenway.commons.exception.DataNotFoundException;
+import com.allenway.infrustructure.exception.DataNotFoundException;
 import com.allenway.infrustructure.entity.Admin;
 import com.allenway.infrustructure.service.AdminService;
 import com.allenway.utils.response.ReturnTemplate;

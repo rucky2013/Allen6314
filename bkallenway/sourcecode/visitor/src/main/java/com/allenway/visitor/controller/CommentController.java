@@ -1,6 +1,6 @@
 package com.allenway.visitor.controller;
 
-import com.allenway.commons.exception.DataNotFoundException;
+import com.allenway.infrustructure.exception.DataNotFoundException;
 import com.allenway.utils.response.ReturnTemplate;
 import com.allenway.utils.validparam.ValidUtils;
 import com.allenway.visitor.entity.Article;

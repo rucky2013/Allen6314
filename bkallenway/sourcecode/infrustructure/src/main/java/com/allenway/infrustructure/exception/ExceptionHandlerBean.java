@@ -1,16 +1,21 @@
-package com.allenway.commons.exception;
+package com.allenway.infrustructure.exception;
 
+import com.allenway.infrustructure.entity.Bug;
+import com.allenway.infrustructure.service.BugService;
 import com.allenway.utils.response.ReturnStatusCode;
 import com.allenway.utils.response.ReturnTemplate;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 
@@ -21,6 +26,9 @@ import java.io.IOException;
 @Slf4j
 @ControllerAdvice
 public class ExceptionHandlerBean extends ResponseEntityExceptionHandler {
+
+    @Autowired
+    private BugService bugService;
 
     /**
      * 运行时异常
@@ -79,6 +87,9 @@ public class ExceptionHandlerBean extends ResponseEntityExceptionHandler {
      * @return
      */
     private ResponseEntity<Object> getResponseEntity(RuntimeException ex, WebRequest request, ReturnStatusCode specificException) {
+
+        Bug bug = new Bug(ex.toString(),((ServletWebRequest)request).getRequest().getRequestURI());
+        bugService.save(bug);
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
         returnTemplate.setStatusCode(specificException);
