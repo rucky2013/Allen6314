@@ -34,9 +34,5 @@
             <groupId>com.allenway</groupId>
             <artifactId>visitor</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.allenway</groupId>
-            <artifactId>admin</artifactId>
-        </dependency>
     </dependencies>
 </project>
