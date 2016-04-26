@@ -1,0 +1,12 @@
+FROM daocloud.io/library/centos
+
+RUN yum install -y epel-release
+RUN yum install -y nodejs npm
+
+RUN mkdir /opt/fallenway
+ADD ./fallenway /opt/fallenway
+RUN cd /opt/fallenway &&  npm install 
+
+EXPOSE 80
+
+CMD node /opt/fallenway/app.js
