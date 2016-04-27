@@ -1,0 +1,14 @@
+FROM daocloud.io/library/centos
+
+# download sourcecode
+RUN yum -y install git 
+RUN cd /opt/ && git clone https://github.com/pzxwhc/Allen6314.git
+
+# build project
+RUN yum -y install java && yum -y install java-1.8.0-openjdk-devel.x86_64 &&  yum -y install maven
+RUN cd /opt/Allen6314/bkallenway/sourcecode && mvn clean install
+
+EXPOSE 8080
+
+# run
+CMD cd /opt/Allen6314/bkallenway/sourcecode/boot/target && java -jar boot-1.0-SNAPSHOT.jar

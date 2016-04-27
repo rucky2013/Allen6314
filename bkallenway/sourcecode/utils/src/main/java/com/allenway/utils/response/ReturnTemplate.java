@@ -1,7 +1,5 @@
 package com.allenway.utils.response;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.Data;
 
 import java.util.HashMap;
