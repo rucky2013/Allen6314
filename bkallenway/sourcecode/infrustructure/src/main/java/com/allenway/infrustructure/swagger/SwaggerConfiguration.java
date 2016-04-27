@@ -1,4 +1,4 @@
-package com.allenway.infrustructure.config;
+package com.allenway.infrustructure.swagger;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
