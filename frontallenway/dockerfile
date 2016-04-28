@@ -1,14 +1,14 @@
 FROM daocloud.io/library/centos
 
+RUN yum -y update
+
 # install node
-RUN yum install -y epel-release
-RUN yum install -y nodejs npm
+RUN curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
+RUN yum -y install nodejs
 
 # download project
 RUN yum -y install git && cd /opt/ && git clone https://github.com/pzxwhc/Allen6314.git
- 
-RUN cd /opt/Allen6314/frontallenway/fallenway &&  npm install 
 
-EXPOSE 7000 
+#EXPOSE 7000 
 
-CMD node /opt/Allen6314/frontallenway/fallenway/app.js
+CMD cd /opt/Allen6314/frontallenway/fallenway &&  npm install -g &&  node /opt/Allen6314/frontallenway/fallenway/app.js
