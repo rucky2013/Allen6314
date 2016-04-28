@@ -1,5 +1,7 @@
 spring:
     datasource:
+        test-on-borrow: true
+        validationQuery: SELECT 1
         driverClassName: com.mysql.jdbc.Driver
         # url: jdbc:mysql://mysqlserver:3306/allenway?useUnicode=true&characterEncoding=UTF-8
         url: jdbc:mysql://java-mysql:3306/allenway?useUnicode=true&characterEncoding=UTF-8
