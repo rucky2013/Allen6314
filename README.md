@@ -4,7 +4,7 @@ just a personal blog
 
 # 目前部署架构图
 
-![blog](http://7xrzlm.com1.z0.glb.clouddn.com/blog.png?imageMogr2/thumbnail/!30p)
+![blog](http://7xrzlm.com1.z0.glb.clouddn.com/aliyun.png?imageMogr2/thumbnail/!30p)
 
 Ps：作为一个小博客，这样子做确认有点大炮打蚊子，主要目的是为了熟悉下这些技术。
 

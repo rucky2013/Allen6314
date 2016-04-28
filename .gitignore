@@ -1,5 +1,5 @@
 .idea
 bkallenway/sourcecode/.idea
-bkallenway/sourcecode/sourcecode.iml
 bkallenway/sourcecode/*/*.iml
 bkallenway/sourcecode/*/target
+bkallenway/sourcecode/*.iml
