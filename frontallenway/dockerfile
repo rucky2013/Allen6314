@@ -9,6 +9,6 @@ RUN yum -y install git && cd /opt/ && git clone https://github.com/pzxwhc/Allen6
  
 RUN cd /opt/Allen6314/frontallenway/fallenway &&  npm install 
 
-EXPOSE 80
+EXPOSE 7000 
 
 CMD node /opt/Allen6314/frontallenway/fallenway/app.js
