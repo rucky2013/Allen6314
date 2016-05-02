@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 var visitor_index = require('./modules/visitor/index');
 var visitor_article = require('./modules/visitor/article');
 var visitor_aboutme = require('./modules/visitor/aboutme');
-app.use('/',visitor_index);
+app.use('/visitor',visitor_index);
 app.use('/visitor/article',visitor_article);
 app.use('/visitor/aboutme',visitor_aboutme);
 
