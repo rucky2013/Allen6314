@@ -64,8 +64,4 @@ router.get('', function(req, res, next) {
     });
 });
 
-router.get('/visitor',function(req,res,next){
-     res.redirect('/');
-});
-
 module.exports = router;
