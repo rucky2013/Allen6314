@@ -34,7 +34,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public Object login(@RequestParam Admin admin){
+    public Object login(Admin admin){
 
         boolean isParamValid = validLoginAdminParam(admin);
 
@@ -47,7 +47,7 @@ public class LoginController {
                 return returnTemplate;
             } else {
                 returnTemplate.addData("admin",ad);
-                return returnTemplate.toString();
+                return returnTemplate;
             }
 
         } else {
