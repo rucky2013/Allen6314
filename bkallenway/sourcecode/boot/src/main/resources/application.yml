@@ -4,6 +4,7 @@ spring:
         validationQuery: SELECT 1
         driverClassName: com.mysql.jdbc.Driver
         # url: jdbc:mysql://mysqlserver:3306/allenway?useUnicode=true&characterEncoding=UTF-8
+#        url: jdbc:mysql://localhost:3306/allenway?useUnicode=true&characterEncoding=UTF-8
         url: jdbc:mysql://java-mysql:3306/allenway?useUnicode=true&characterEncoding=UTF-8
         password: 123456
         username: root
@@ -19,5 +20,14 @@ spring:
 infrastructure:
     # swagger:true 打开 swagger:off 关闭   /  网址http://localhost:8080/swagger-ui.html
     swagger: true
+    oauth2:
+        enable: true
+        oauthTokenApiURL: https://127.0.0.1:8443/admin/oauth2/token
+        clientId: whc_id
+        clientSecret: whc_secret
+        grantType: password
+        provisionKey: 0839b74077dc494ca89d3970bc0ad4c8
+        scope: whc
+
 
 
