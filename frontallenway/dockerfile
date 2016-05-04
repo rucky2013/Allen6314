@@ -9,6 +9,11 @@ RUN yum -y install nodejs
 # download project
 RUN yum -y install git && cd /opt/ && git clone https://github.com/pzxwhc/Allen6314.git
 
+# install pm2
+RUN cd /opt/Allen6314/frontallenway/fallenway && npm install pm2 -g
+
 EXPOSE 7000 
 
-CMD cd /opt/Allen6314/frontallenway/fallenway &&  npm install -g &&  node /opt/Allen6314/frontallenway/fallenway/app.js
+RUN touch /opt/flag.log
+CMD tail -f /opt/flag.log
+#CMD cd /opt/Allen6314/frontallenway/fallenway &&  npm install -g &&  node /opt/Allen6314/frontallenway/fallenway/app.js
