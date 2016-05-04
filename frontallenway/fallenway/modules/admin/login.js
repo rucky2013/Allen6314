@@ -30,6 +30,8 @@ router.post('/dologin',function(req,res,next){
             if(returnData.statusCode != 0){
                 console.log('request for login fail,returnData.statusCode = ' + returnData.statusCode);
             } else {
+                var token = returnData.data.token.access_token;
+                res.setHeader('Set-Cookie', ['Authorization: Bearer ='+token]);
                 res.redirect('/admin');
             }
         } else {
