@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 @Slf4j
 @RestController
-@RequestMapping(value = "/operation")
+@RequestMapping(value = "auth/operation")
 public class RecordController {
 
     @Autowired

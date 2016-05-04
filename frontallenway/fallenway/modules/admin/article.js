@@ -60,7 +60,7 @@ router.post('/addArticle/doAdd',function(req,res,next){
          'tagId': req.body.tagId
     }
 
-    var url = config.getBackendUrlPrefix() + "article/save-article";
+    var url = config.getBackendUrlPrefix() + "auth/article/save-article";
     request.post({url:url,form:data},function(error,response,body){
         if(!error && response.statusCode == 200 ){
             var returnData = JSON.parse(body);
@@ -77,7 +77,7 @@ router.post('/addArticle/doAdd',function(req,res,next){
 
 router.get('/deleteArticle',function(req,res,next){
 
-    var url = config.getBackendUrlPrefix() + "article/delete-article-by-id";
+    var url = config.getBackendUrlPrefix() + "auth/article/delete-article-by-id";
     var data = {id:req.query.id};
 
     request.post({url:url,form:data},function(error,response,body){

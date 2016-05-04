@@ -5,7 +5,7 @@ var Config = require('../../config/globalconfig.js');
 var config = new Config();
 
 router.get('',function(req,res,next){
-    var url = config.getBackendUrlPrefix() + "bug/get-all-bugs";
+    var url = config.getBackendUrlPrefix() + "auth/bug/get-all-bugs";
 
     var cookies = {};
     req.headers.cookie && req.headers.cookie.split(';').forEach(function( cookie ) {

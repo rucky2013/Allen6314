@@ -5,7 +5,7 @@ var Config = require('../../config/globalconfig.js');
 var config = new Config();
 
 router.get('',function(req,res,next){
-    var url = config.getBackendUrlPrefix() + "operation/get-records";
+    var url = config.getBackendUrlPrefix() + "auth/operation/get-records";
     request(url,function(error,response,body){
         if(!error){
             var returnData = JSON.parse(body);
