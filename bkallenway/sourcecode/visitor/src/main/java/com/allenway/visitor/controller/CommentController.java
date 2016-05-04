@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @Data
 @RestController
-@RequestMapping(value = "/comment")
 public class CommentController {
 
     @Autowired
@@ -38,7 +37,7 @@ public class CommentController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "add-comment",method = RequestMethod.POST)
+    @RequestMapping(value = "/comment/add-comment",method = RequestMethod.POST)
     public Object addComment(Comment comment, HttpServletRequest request){
         ReturnTemplate returnTemplate = new ReturnTemplate();
         if(validData(comment,request)){

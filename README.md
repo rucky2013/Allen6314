@@ -4,7 +4,7 @@ just a personal blog
 
 # 目前部署架构图
 
-![blog](http://7xrzlm.com1.z0.glb.clouddn.com/aliyun1.png?imageMogr2/thumbnail/!30p)
+![blog](http://7xrzlm.com1.z0.glb.clouddn.com/allenway.png?imageMogr2/thumbnail/!30p)
 
 Ps：
 
@@ -30,6 +30,7 @@ Ps：
   - 统一异常处理
   - 操作记录
   - 错误日志记录
+  - oauth 权限控制
 
 # frontallenway（前端部分）
 

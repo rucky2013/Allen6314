@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @Data
 @RestController
-@RequestMapping(value = "/tag")
 public class TagController {
 
     @Autowired
@@ -26,7 +25,7 @@ public class TagController {
      * 查找全部的 tag
      * @return
      */
-    @RequestMapping(value = "/find-all-tags",method = RequestMethod.GET)
+    @RequestMapping(value = "/tag/find-all-tags",method = RequestMethod.GET)
     public Object findAllTags(){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();

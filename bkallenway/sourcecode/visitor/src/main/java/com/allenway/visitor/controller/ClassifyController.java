@@ -26,7 +26,6 @@ import java.util.List;
 @Slf4j
 @Data
 @RestController
-@RequestMapping(value = "/classify")
 public class ClassifyController {
 
     @Autowired
@@ -40,7 +39,7 @@ public class ClassifyController {
      * @param classify
      * @return
      */
-    @RequestMapping(value = "/save-classify",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/classify/save-classify",method = RequestMethod.POST)
     public Object saveClassify(@RequestParam Classify classify){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
@@ -70,7 +69,7 @@ public class ClassifyController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/delete-classify-by-id",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/classify/delete-classify-by-id",method = RequestMethod.POST)
     public Object deleteClassifyById(@RequestParam String id){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
@@ -122,7 +121,7 @@ public class ClassifyController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/find-classify-by-id",method = RequestMethod.POST)
+    @RequestMapping(value = "/classify/find-classify-by-id",method = RequestMethod.POST)
     public Object findClassifyById(@RequestParam String id){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
@@ -145,7 +144,7 @@ public class ClassifyController {
      * 查找所有的一级目录
      * @return
      */
-    @RequestMapping(value = "/find-all-first-level-classifies",method = RequestMethod.GET)
+    @RequestMapping(value = "/classify/find-all-first-level-classifies",method = RequestMethod.GET)
     public Object findAllFirstLevelClassifies(){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();

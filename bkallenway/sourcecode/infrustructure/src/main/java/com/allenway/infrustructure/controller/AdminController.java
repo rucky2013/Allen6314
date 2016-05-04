@@ -22,7 +22,6 @@ import java.util.HashMap;
 @Slf4j
 @Data
 @RestController
-@RequestMapping(value = "/admin")
 public class AdminController {
 
     @Autowired
@@ -32,7 +31,7 @@ public class AdminController {
      * 查找管理员（返回值不包括密码字段）
      * @return
      */
-    @RequestMapping(value = "/find-admin",method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/find-admin",method = RequestMethod.GET)
     public Object findAdmin(){
 
         Admin admin = adminService.findAdmin();
@@ -77,7 +76,7 @@ public class AdminController {
      * @param admin
      * @return
      */
-    @RequestMapping(value = "/update-admin",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/admin/update-admin",method = RequestMethod.POST)
     public Object updateAdmin(@RequestParam Admin admin){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();

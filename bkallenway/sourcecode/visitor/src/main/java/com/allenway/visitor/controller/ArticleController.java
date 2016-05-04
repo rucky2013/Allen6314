@@ -25,7 +25,6 @@ import java.util.List;
 @Data
 @Slf4j
 @RestController
-@RequestMapping(value = "/article")
 public class ArticleController {
 
     @Autowired
@@ -48,7 +47,7 @@ public class ArticleController {
      * @param article
      * @return
      */
-    @RequestMapping(value = "/save-article",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/article/save-article",method = RequestMethod.POST)
     public Object saveArticle(Article article, HttpServletRequest request){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
@@ -108,7 +107,7 @@ public class ArticleController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/delete-article-by-id",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/article/delete-article-by-id",method = RequestMethod.POST)
     public Object deleteArticleById(@RequestParam String id){
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
@@ -146,7 +145,7 @@ public class ArticleController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/find-article-by-id",method = RequestMethod.GET)
+    @RequestMapping(value = "/article/find-article-by-id",method = RequestMethod.GET)
     public Object findArticleById(String id) {
 
         ReturnTemplate returnTemplate = new ReturnTemplate();
@@ -169,7 +168,7 @@ public class ArticleController {
      * 获取全部的文章
      * @return
      */
-    @RequestMapping(value = "/get-all-articles",method = RequestMethod.GET)
+    @RequestMapping(value = "/article/get-all-articles",method = RequestMethod.GET)
     public Object getAllArticles(){
         log.info("getAllArticles function ... ");
         ReturnTemplate returnTemplate = new ReturnTemplate();
@@ -216,7 +215,7 @@ public class ArticleController {
         article.setCommentNum(comments.size());
     }
 
-    @RequestMapping(value = "get-recommend-articles",method = RequestMethod.GET)
+    @RequestMapping(value = "/article/get-recommend-articles",method = RequestMethod.GET)
     public Object findRecommendArticles(){
         ReturnTemplate returnTemplate = new ReturnTemplate();
         returnTemplate.addData("recommendArticles",articleService.findRecommendArticles());

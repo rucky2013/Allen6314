@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @Slf4j
 @RestController
-@RequestMapping(value = "/bug")
+@RequestMapping(value = "auth/bug")
 public class BugController {
 
     @Autowired
