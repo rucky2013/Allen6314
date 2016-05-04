@@ -6,6 +6,14 @@ var config = new Config();
 
 router.get('',function(req,res,next){
     var url = config.getBackendUrlPrefix() + "bug/get-all-bugs";
+
+    var cookies = {};
+    req.headers.cookie && req.headers.cookie.split(';').forEach(function( cookie ) {
+        var parts = cookie.split('=');
+	cookies[ parts[ 0 ].trim() ] = ( parts[ 1 ] || '' ).trim();
+    });
+    console.log("######authorization = " + cookies['authorization']);
+
     request(url,function(error,response,body){
         if(!error){
             var returnData = JSON.parse(body);

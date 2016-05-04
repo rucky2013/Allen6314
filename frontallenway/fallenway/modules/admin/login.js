@@ -30,7 +30,14 @@ router.post('/dologin',function(req,res,next){
             if(returnData.statusCode != 0){
                 console.log('request for login fail,returnData.statusCode = ' + returnData.statusCode);
             } else {
-                res.redirect('/admin');
+                var token = returnData.data.token.access_token;
+		res.setHeader('Set-Cookie',['Authorization: Bearer = '+token]);
+		
+		var path = "<li><a href = \"/admin\" class = \"active\">Index</a></li>";
+		var data = {
+        		'path':path
+    		};
+		res.render('admin/index',{'data':data});		
             }
         } else {
             console.log('request for login fail!!');
